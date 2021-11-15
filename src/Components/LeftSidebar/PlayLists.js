@@ -1,0 +1,94 @@
+import React, { useEffect, useState } from "react";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+import { themes } from "../../Helpers/Theme";
+import axios from "axios";
+import { PLAYLIST_URL } from "../../ApiUrl";
+import { useSelector } from "react-redux";
+import { PlaylistSelector } from "../../Reducers/Reducer";
+import { useDispatch } from "react-redux";
+import { loadPlaylists } from "../../Actions/Actions";
+import { Link } from "react-router-dom";
+
+const PlayLists = () => {
+  const playlistStyles = makeStyles((theme) => ({
+    "@global": {
+      "*::-webkit-scrollbar": {
+        width: 10,
+        height: 50,
+      },
+      "*::-webkit-scrollbar-track": {
+        borderRadius: 10,
+      },
+      "*::-webkit-scrollbar-thumb": {
+        background: themes.palette.primary.grey2,
+      },
+    },
+    root: {
+      padding: 20,
+      height: "100%",
+      //overflow: "scroll",
+    },
+    list: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    link: {
+      color: themes.palette.primary.grey3,
+      cursor: "pointer",
+      textDecoration: "none",
+      "&:hover": {
+        color: themes.palette.primary.white,
+      },
+    },
+    linkDiv: {
+      //margin: "10px 0",
+    },
+  }));
+  const classes = playlistStyles();
+  const dispatch = useDispatch();
+
+  const [access_token, setToken] = useState("");
+
+  //const { token } = useSelector((state) => state.music);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+    const getPlaylists = async () => {
+      const response = await axios.get(PLAYLIST_URL, {
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      dispatch(loadPlaylists(response.data));
+      console.log(access_token);
+    };
+    getPlaylists();
+  }, [access_token, dispatch]);
+
+  const Playlists = useSelector((state) => state.music.Playlists);
+  console.log(Playlists);
+
+  return (
+    <div className={classes.root}>
+      <div className={classes.list}>
+        <Typography variant="smallText" fontWeight="bold">
+          Playlists
+        </Typography>
+      </div>
+      <div>
+        {Playlists.items.map((item) => (
+          <div key={item.id} className={classes.linkDiv}>
+            <Link to={item.href} className={classes.link}>
+              <p>{item.name}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PlayLists;
