@@ -8,13 +8,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loadPlaylists } from "../Actions/Actions";
 import { Link } from "react-router-dom";
+import Navbar from "../Components/MiddleComponent/Navbar";
 
 const Library = () => {
   const playlistStyles = makeStyles((theme) => ({
     root: {
-      padding: 20,
+      padding: "0 30px",
       height: "100%",
-      //overflow: "scroll",
     },
     list: {
       display: "flex",
@@ -28,9 +28,7 @@ const Library = () => {
         color: themes.palette.primary.white,
       },
     },
-    linkDiv: {
-      margin: "10px 0",
-    },
+    linkDiv: { margin: "10px 0" },
   }));
   const classes = playlistStyles();
 
@@ -39,6 +37,7 @@ const Library = () => {
 
   return (
     <div className={classes.root}>
+      <Navbar />
       <div className={classes.list}>
         <Typography variant="smallText" fontWeight="bold">
           All Playlists

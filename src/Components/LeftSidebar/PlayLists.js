@@ -12,22 +12,9 @@ import { Link } from "react-router-dom";
 
 const PlayLists = () => {
   const playlistStyles = makeStyles((theme) => ({
-    "@global": {
-      "*::-webkit-scrollbar": {
-        width: 10,
-        height: 50,
-      },
-      "*::-webkit-scrollbar-track": {
-        borderRadius: 10,
-      },
-      "*::-webkit-scrollbar-thumb": {
-        background: themes.palette.primary.grey2,
-      },
-    },
     root: {
       padding: 20,
-      height: "100%",
-      //overflow: "scroll",
+      width: "100%",
     },
     list: {
       display: "flex",
@@ -37,12 +24,14 @@ const PlayLists = () => {
       color: themes.palette.primary.grey3,
       cursor: "pointer",
       textDecoration: "none",
+      fontSize: 14,
+      fontWeight: 500,
       "&:hover": {
         color: themes.palette.primary.white,
       },
     },
     linkDiv: {
-      //margin: "10px 0",
+      //margin: "5px 0",
     },
   }));
   const classes = playlistStyles();

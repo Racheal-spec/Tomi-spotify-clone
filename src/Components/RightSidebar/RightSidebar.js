@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { themes } from "../../Helpers/Theme";
 import MyButtons from "../../Helpers/Buttons";
 
-const RenderRightSidebar = () => {
+const RightSidebar = () => {
   const rightDiv = makeStyles((theme) => ({
     root: {
       padding: "20px 20px",
@@ -15,11 +15,13 @@ const RenderRightSidebar = () => {
     btn: {
       color: themes.palette.primary.white,
       backgroundColor: themes.palette.primary.blue,
-      padding: "13px 22px",
+      padding: "12px 16px",
+      fontSize: 12,
       borderRadius: 20,
       border: "none",
       letterSpacing: 2,
       fontWeight: "bold",
+      textTransform: "capitalize",
     },
   }));
   const classes = rightDiv();
@@ -35,7 +37,7 @@ const RenderRightSidebar = () => {
         </Typography>
       </div>
       <div>
-        <button className={classes.btn}>CONNECT WITH FACEBOOK</button>
+        <button className={classes.btn}>connect with facebook</button>
       </div>
       <div className={classes.spacing}>
         <Typography variant="smallestText" fontWeight="bold">
@@ -47,4 +49,4 @@ const RenderRightSidebar = () => {
   );
 };
 
-export default RenderRightSidebar;
+export default RightSidebar;

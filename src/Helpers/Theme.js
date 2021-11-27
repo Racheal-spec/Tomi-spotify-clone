@@ -16,45 +16,42 @@ export const themes = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Raleway"].join(","),
     lineHeight: 1.1,
     h1: {
       fontSize: "56px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     h2: {
       fontSize: "48px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     h3: {
       fontSize: "40px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     h4: {
       fontSize: "32px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     h5: {
       fontSize: "24px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     h6: {
       fontSize: "20px",
-      fontFamily: "Raleway",
+
       fontWeight: "700",
     },
     smallText: {
       fontSize: "14px",
-      fontFamily: "Raleway",
     },
     smallestText: {
       fontSize: "11px",
-      fontFamily: "Raleway",
     },
   },
 });

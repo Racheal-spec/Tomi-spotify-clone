@@ -16,8 +16,7 @@ const Navbar = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingTop: 5,
-      //padding: "5px 6px",
+      paddingTop: 2,
     },
     profile: {
       display: "flex",
@@ -26,7 +25,7 @@ const Navbar = () => {
       backgroundColor: themes.palette.primary.black,
       borderRadius: 30,
       cursor: "pointer",
-      padding: "3px 0",
+      padding: "4px 0",
     },
     arrow: {
       width: 45,
@@ -40,7 +39,7 @@ const Navbar = () => {
     upgrade: {
       fontWeight: "bold",
       backgroundColor: themes.palette.primary.black,
-      padding: "8px 25px",
+      padding: "6px 30px",
       borderRadius: 30,
       border: "1px solid #FAF9F6",
       marginLeft: 200,
@@ -49,10 +48,12 @@ const Navbar = () => {
       color: themes.palette.primary.offwhite,
       textDecoration: "none",
       letterSpacing: 2,
+      fontSize: 12,
       textTransform: "Uppercase",
     },
     margin: {
-      margin: "0 8px",
+      margin: "0 6px",
+      color: themes.palette.primary.offwhite,
     },
   }));
   const classes = navStyles();
@@ -72,6 +73,7 @@ const Navbar = () => {
         <ArrowBackIos className={classes.arrow} />
         <ArrowForwardIos className={classes.arrow} />
       </div>
+
       <div className={classes.upgrade}>
         <Link
           to="https://www.spotify.com/ng/premium/"
@@ -81,7 +83,10 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={classes.profile} onClick={handleClick}>
-        <Avatar src={User?.images[0].url} />
+        <Avatar
+          src={User?.images[0].url}
+          style={{ width: "25px", height: "25px" }}
+        />
         <p className={classes.margin}>Tomisin</p>
         {clickArrow ? (
           <ArrowDropDownOutlinedIcon />

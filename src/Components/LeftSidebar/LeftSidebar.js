@@ -9,9 +9,23 @@ import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
 import PlayLists from "./PlayLists";
 import { PLAYLIST } from "../../Helpers/Routes";
+import { FavoriteRounded } from "@mui/icons-material";
 
-const RenderLeftSidebar = () => {
+const LeftSidebar = () => {
   const controlStyles = makeStyles((theme) => ({
+    /*
+    "@global": {
+      "*::-webkit-scrollbar": {
+        width: 10,
+      },
+      "*::-webkit-scrollbar-track": {
+        borderRadius: 10,
+      },
+      "*::-webkit-scrollbar-thumb": {
+        background: themes.palette.primary.grey2,
+      },
+    },
+    */
     root: {
       padding: "7px 0",
     },
@@ -54,10 +68,18 @@ const RenderLeftSidebar = () => {
     menuDiv2: {
       padding: "20px 0",
     },
-    hrstyles: {
-      border: "0.5px solid #212121",
-      width: "80%",
-      margin: "0 auto",
+
+    likeicon: {
+      background: "linear-gradient(to right bottom, #430089 30% , #ffffff )",
+      cursor: "pointer",
+      margin: "0 15px",
+      padding: 5,
+      "&:hover": {
+        color: themes.palette.primary.white,
+      },
+      "&:focus": {
+        color: themes.palette.primary.white,
+      },
     },
   }));
   const classes = controlStyles();
@@ -99,18 +121,14 @@ const RenderLeftSidebar = () => {
           </Typography>
         </div>
         <div className={classes.iconDiv}>
-          <AddBoxIcon className={classes.icon} />
+          <FavoriteRounded className={classes.likeicon} />
           <Typography variant="smallText" fontWeight="bold">
             Liked Songs
           </Typography>
         </div>
       </div>
-      <hr className={classes.hrstyles} />
-      <div>
-        <PlayLists />
-      </div>
     </div>
   );
 };
 
-export default RenderLeftSidebar;
+export default LeftSidebar;

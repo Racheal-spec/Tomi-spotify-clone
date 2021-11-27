@@ -9,9 +9,7 @@ import { HOMEPAGE, PLAYLIST } from "../../Helpers/Routes";
 import Home from "../../Pages/Home";
 
 function RenderMiddlePage() {
-  const mainStyles = makeStyles((theme) => ({
-   
-  }));
+  const mainStyles = makeStyles((theme) => ({}));
   const classes = mainStyles();
 
   const User = useSelector((state) => state.music.User);
