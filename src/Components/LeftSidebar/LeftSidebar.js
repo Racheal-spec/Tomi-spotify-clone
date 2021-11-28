@@ -28,6 +28,12 @@ const LeftSidebar = () => {
     */
     root: {
       padding: "7px 0",
+      "*::-webkit-scrollbar": {
+        width: 10,
+      },
+      "*::-webkit-scrollbar-track": {
+        borderRadius: 10,
+      },
     },
     icon: {
       color: themes.palette.primary.grey3,

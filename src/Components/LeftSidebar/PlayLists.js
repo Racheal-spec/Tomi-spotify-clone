@@ -14,7 +14,7 @@ const PlayLists = () => {
   const playlistStyles = makeStyles((theme) => ({
     root: {
       padding: 20,
-      width: "100%",
+      width: "100vh",
     },
     list: {
       display: "flex",
@@ -31,7 +31,7 @@ const PlayLists = () => {
       },
     },
     linkDiv: {
-      //margin: "5px 0",
+      margin: "10px 0",
     },
   }));
   const classes = playlistStyles();
@@ -52,7 +52,6 @@ const PlayLists = () => {
         },
       });
       dispatch(loadPlaylists(response.data));
-      console.log(access_token);
     };
     getPlaylists();
   }, [access_token, dispatch]);

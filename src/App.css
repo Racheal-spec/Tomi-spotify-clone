@@ -8,3 +8,6 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
+body::-webkit-scrollbar {
+  display: none;
+}

@@ -13,6 +13,7 @@ import Home from "../Pages/Home";
 import PlayLists from "../Components/LeftSidebar/PlayLists";
 import PlaylistDetails from "./PlaylistDetails";
 import LeftSidebar from "../Components/LeftSidebar/LeftSidebar";
+import { Calculate } from "@mui/icons-material";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -33,19 +34,20 @@ const Homepage = () => {
     grid1: {
       background: themes.palette.primary.black,
       color: themes.palette.primary.grey3,
-      height: "100vh",
+      height: "calc(100vh + 30vh)",
       width: "20%",
     },
     grid2: {
       background: themes.palette.primary.dark,
       color: themes.palette.primary.grey3,
-      height: "100vh",
+      height: "calc(100vh + 30vh)",
       width: "60%",
+      paddingBottom: 100,
     },
     grid3: {
       background: themes.palette.primary.grey1,
       color: themes.palette.primary.grey3,
-      height: "100vh",
+      height: "calc(100vh + 30vh)",
       width: "20%",
     },
 
@@ -58,8 +60,6 @@ const Homepage = () => {
       zIndex: 999,
     },
     listScroll: {
-      overflowY: "scroll",
-      height: "100%",
       "&::-webkit-scrollbar": {
         width: "0.4em",
       },

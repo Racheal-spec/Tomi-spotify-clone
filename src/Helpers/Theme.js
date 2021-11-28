@@ -48,7 +48,8 @@ export const themes = createTheme({
       fontWeight: "700",
     },
     smallText: {
-      fontSize: "14px",
+      fontSize: "15px",
+      fontWeight: "700",
     },
     smallestText: {
       fontSize: "11px",
