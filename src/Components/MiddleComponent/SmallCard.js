@@ -5,6 +5,7 @@ import girl3 from "../../Assets/girl3.jpg";
 import { PlayArrow } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { ONEPLAYLIST } from "../../Helpers/Routes";
+import PauseIcon from "@mui/icons-material/Pause";
 
 const SmallCard = () => {
   const smallCardStyle = makeStyles((theme) => ({
@@ -56,7 +57,12 @@ const SmallCard = () => {
   const classes = smallCardStyle();
 
   const [mousehover, setMouseHover] = useState({ opacity: "0" });
+  const [click, setClick] = useState(false);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setClick(!click);
+  };
   return (
     <Link
       to={ONEPLAYLIST}
@@ -75,8 +81,12 @@ const SmallCard = () => {
             <div>
               <strong>Liked songs</strong>
             </div>
-            <div className={classes.icon} style={mousehover}>
-              <PlayArrow />
+            <div
+              className={classes.icon}
+              style={mousehover}
+              onClick={handleClick}
+            >
+              {click ? <PauseIcon /> : <PlayArrow />}
             </div>
           </div>
         </div>

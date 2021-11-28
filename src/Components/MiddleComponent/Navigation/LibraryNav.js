@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { Avatar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { themes } from "../../Helpers/Theme";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { themes } from "../../../Helpers/Theme";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
-import { Link } from "react-router-dom";
-import { Avatar } from "@mui/material";
-import { useSelector } from "react-redux";
 
-const Navbar = () => {
+const LibraryNav = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
@@ -68,34 +66,31 @@ const Navbar = () => {
   console.log(User);
 
   return (
-    <div className={classes.root}>
-      <div>
-        <ArrowBackIos className={classes.arrow} />
-        <ArrowForwardIos className={classes.arrow} />
-      </div>
+    <>
+      <div className={classes.root}>
+        <div>
+          <ArrowBackIos className={classes.arrow} />
+          <ArrowForwardIos className={classes.arrow} />
+        </div>
 
-      <div className={classes.upgrade}>
-        <Link
-          to="https://www.spotify.com/ng/premium/"
-          className={classes.upgradeLink}
-        >
-          upgrade
-        </Link>
+        <div className={classes.upgrade}>libraryyyyyyyy</div>
+
+        <div className={classes.profile} onClick={handleClick}>
+          <Avatar
+            src={User?.images[0].url}
+            style={{ width: "25px", height: "25px" }}
+          />
+          <p className={classes.margin}>Tomisin</p>
+          {clickArrow ? (
+            <ArrowDropDownOutlinedIcon />
+          ) : (
+            <ArrowDropUpOutlinedIcon />
+          )}
+        </div>
       </div>
-      <div className={classes.profile} onClick={handleClick}>
-        <Avatar
-          src={User?.images[0].url}
-          style={{ width: "25px", height: "25px" }}
-        />
-        <p className={classes.margin}>Tomisin</p>
-        {clickArrow ? (
-          <ArrowDropDownOutlinedIcon />
-        ) : (
-          <ArrowDropUpOutlinedIcon />
-        )}
-      </div>
-    </div>
+      {children}
+    </>
   );
 };
 
-export default Navbar;
+export default LibraryNav;

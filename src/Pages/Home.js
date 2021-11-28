@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../Helpers/Theme";
 import { Grid, Typography } from "@mui/material";
-import Navbar from "../Components/MiddleComponent/Navbar";
 import SmallCard from "../Components/MiddleComponent/SmallCard";
 import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
@@ -46,7 +45,6 @@ const Home = () => {
 
   return (
     <div className={classes.homeWrapper}>
-      <Navbar />
       <Typography variant="h4" className={classes.spaceY}>
         Good afternoon
       </Typography>

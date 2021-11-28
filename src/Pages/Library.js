@@ -3,12 +3,10 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../Helpers/Theme";
 import axios from "axios";
-import { PLAYLIST_URL } from "../ApiUrl";
+
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { loadPlaylists } from "../Actions/Actions";
-import { Link } from "react-router-dom";
-import Navbar from "../Components/MiddleComponent/Navbar";
+import { Grid } from "@mui/material";
+import MusicCard from "../Components/MusicCard";
 
 const Library = () => {
   const playlistStyles = makeStyles((theme) => ({
@@ -37,21 +35,19 @@ const Library = () => {
 
   return (
     <div className={classes.root}>
-      <Navbar />
       <div className={classes.list}>
         <Typography variant="smallText" fontWeight="bold">
           All Playlists
         </Typography>
       </div>
       <div>
-        {Playlists.items.map((item) => (
-          <div key={item.id} className={classes.linkDiv}>
-            <Link to={item.href} className={classes.link}>
-              {item.name}
-              <img src={item.snapshot_id} alt="" />
-            </Link>
-          </div>
-        ))}
+        <Grid container spacing={2}>
+          {Playlists.items.map((item) => (
+            <Grid item xl={4} lg={4} xs={12}>
+              <MusicCard />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </div>
   );

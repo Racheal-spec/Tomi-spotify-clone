@@ -7,13 +7,14 @@ import { themes } from "../Helpers/Theme";
 import Grid from "@mui/material/Grid";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Library from "../Pages/Library";
-import { HOMEPAGE, ONEPLAYLIST, PLAYLIST } from "../Helpers/Routes";
+import { HOMEPAGE, ONEPLAYLIST, PLAYLIST, SEARCH } from "../Helpers/Routes";
 import Home from "../Pages/Home";
 
 import PlayLists from "../Components/LeftSidebar/PlayLists";
 import PlaylistDetails from "./PlaylistDetails";
 import LeftSidebar from "../Components/LeftSidebar/LeftSidebar";
-import { Calculate } from "@mui/icons-material";
+import DefaultNav from "../Components/MiddleComponent/Navigation/index";
+import Search from "./Search";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -94,17 +95,22 @@ const Homepage = () => {
 
           <Grid item className={classes.grid2}>
             <div className={classes.root}>
-              <Switch>
-                <Route exact path={HOMEPAGE}>
-                  <Home />
-                </Route>
-                <Route path={PLAYLIST}>
-                  <Library />
-                </Route>
-                <Route path={ONEPLAYLIST}>
-                  <PlaylistDetails />
-                </Route>
-              </Switch>
+              <DefaultNav>
+                <Switch>
+                  <Route exact path={HOMEPAGE}>
+                    <Home />
+                  </Route>
+                  <Route path={PLAYLIST}>
+                    <Library />
+                  </Route>
+                  <Route path={ONEPLAYLIST}>
+                    <PlaylistDetails />
+                  </Route>
+                  <Route path={SEARCH}>
+                    <Search />
+                  </Route>
+                </Switch>
+              </DefaultNav>
             </div>
           </Grid>
 

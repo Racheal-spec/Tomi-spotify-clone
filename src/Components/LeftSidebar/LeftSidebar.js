@@ -8,7 +8,7 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
 import PlayLists from "./PlayLists";
-import { PLAYLIST } from "../../Helpers/Routes";
+import { PLAYLIST, SEARCH } from "../../Helpers/Routes";
 import { FavoriteRounded } from "@mui/icons-material";
 
 const LeftSidebar = () => {
@@ -103,7 +103,7 @@ const LeftSidebar = () => {
           </Typography>
         </div>
       </Link>
-      <Link to="/" className={classes.navlink}>
+      <Link to={SEARCH} className={classes.navlink}>
         <div className={classes.iconDiv}>
           <SearchOutlinedIcon className={classes.icon} />
           <Typography variant="smallText" fontWeight="bold">
