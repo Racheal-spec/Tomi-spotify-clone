@@ -1,5 +1,5 @@
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { Avatar } from "@mui/material";
+import { ArrowBackIos, ArrowForwardIos, Search } from "@mui/icons-material";
+import { Avatar, IconButton, InputAdornment, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -34,20 +34,18 @@ const NavbarSearch = ({ children }) => {
       backgroundColor: themes.palette.primary.dark,
       cursor: "pointer",
     },
-    upgrade: {
-      fontWeight: "bold",
-      backgroundColor: themes.palette.primary.black,
-      padding: "6px 30px",
-      borderRadius: 30,
-      border: "1px solid #FAF9F6",
-      marginLeft: 200,
+    search: {
+      marginRight: 160,
     },
-    upgradeLink: {
-      color: themes.palette.primary.offwhite,
-      textDecoration: "none",
-      letterSpacing: 2,
-      fontSize: 12,
-      textTransform: "Uppercase",
+
+    searchStyles: {
+      width: "350px",
+      height: "40px",
+      fontWeight: "bold",
+      backgroundColor: themes.palette.primary.white,
+      padding: "6px 30px",
+      border: 0,
+      borderRadius: "30px !important",
     },
     margin: {
       margin: "0 6px",
@@ -73,7 +71,24 @@ const NavbarSearch = ({ children }) => {
           <ArrowForwardIos className={classes.arrow} />
         </div>
 
-        <div className={classes.upgrade}>searchhhhhhhhh</div>
+        <div className={classes.search}>
+          <TextField
+            type="search"
+            variant="outlined"
+            placeholder="Artists, songs or podcasts"
+            disableRipple
+            InputProps={{
+              className: classes.searchStyles,
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton edge="end">
+                    <Search />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </div>
 
         <div className={classes.profile} onClick={handleClick}>
           <Avatar

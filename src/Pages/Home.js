@@ -6,6 +6,7 @@ import SmallCard from "../Components/MiddleComponent/SmallCard";
 import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
+import Navbar from "../Components/MiddleComponent/Navigation/Navbar";
 
 const Home = () => {
   const homeStyles = makeStyles((theme) => ({
