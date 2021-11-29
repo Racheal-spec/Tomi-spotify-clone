@@ -9,8 +9,10 @@ const DefaultNav = ({ children, ...props }) => {
   let location = useLocation();
   console.log(location);
 
+  const PlaylistRegex = new RegExp("^/library");
+
   let NewNavbar = Navbar;
-  if (location.pathname.match(PLAYLIST)) {
+  if (location.pathname.match(PlaylistRegex)) {
     NewNavbar = LibraryNav;
   } else if (location.pathname.match(SEARCH)) {
     NewNavbar = NavbarSearch;

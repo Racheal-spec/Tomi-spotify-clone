@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { themes } from "../../../Helpers/Theme";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
+import { ALBUM, ARTIST, PLAYLIST, PODCAST } from "../../../Helpers/Routes";
 
 const LibraryNav = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
@@ -34,13 +35,9 @@ const LibraryNav = ({ children }) => {
       backgroundColor: themes.palette.primary.dark,
       cursor: "pointer",
     },
-    upgrade: {
+    libNav: {
       fontWeight: "bold",
-      backgroundColor: themes.palette.primary.black,
-      padding: "6px 30px",
-      borderRadius: 30,
-      border: "1px solid #FAF9F6",
-      marginLeft: 200,
+      //marginLeft: 200,
     },
     upgradeLink: {
       color: themes.palette.primary.offwhite,
@@ -52,6 +49,15 @@ const LibraryNav = ({ children }) => {
     margin: {
       margin: "0 6px",
       color: themes.palette.primary.offwhite,
+    },
+    link: {
+      color: themes.palette.primary.white,
+      textDecoration: "none",
+      margin: "0 15px",
+    },
+    navlink: {
+      listStyle: "none",
+      display: "flex",
     },
   }));
   const classes = navStyles();
@@ -73,7 +79,30 @@ const LibraryNav = ({ children }) => {
           <ArrowForwardIos className={classes.arrow} />
         </div>
 
-        <div className={classes.upgrade}>libraryyyyyyyy</div>
+        <div className={classes.libNav}>
+          <ul className={classes.navlink}>
+            <li>
+              <Link to={PLAYLIST} className={classes.link}>
+                Playlists
+              </Link>
+            </li>
+            <li>
+              <Link to={PODCAST} className={classes.link}>
+                Podcasts
+              </Link>
+            </li>
+            <li>
+              <Link to={ARTIST} className={classes.link}>
+                Artists
+              </Link>
+            </li>
+            <li>
+              <Link to={ALBUM} className={classes.link}>
+                Albums
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         <div className={classes.profile} onClick={handleClick}>
           <Avatar

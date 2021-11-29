@@ -11,7 +11,7 @@ import MusicCard from "../Components/MusicCard";
 const Library = () => {
   const playlistStyles = makeStyles((theme) => ({
     root: {
-      padding: "0 30px",
+      padding: "20px 30px",
       height: "100%",
     },
     list: {
@@ -26,6 +26,10 @@ const Library = () => {
         color: themes.palette.primary.white,
       },
     },
+    typo: {
+      color: themes.palette.primary.white,
+      padding: "10px 0",
+    },
     linkDiv: { margin: "10px 0" },
   }));
   const classes = playlistStyles();
@@ -36,8 +40,8 @@ const Library = () => {
   return (
     <div className={classes.root}>
       <div className={classes.list}>
-        <Typography variant="smallText" fontWeight="bold">
-          All Playlists
+        <Typography variant="h6" className={classes.typo}>
+          Playlists
         </Typography>
       </div>
       <div>

@@ -7,7 +7,15 @@ import { themes } from "../Helpers/Theme";
 import Grid from "@mui/material/Grid";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Library from "../Pages/Library";
-import { HOMEPAGE, ONEPLAYLIST, PLAYLIST, SEARCH } from "../Helpers/Routes";
+import {
+  ALBUM,
+  ARTIST,
+  HOMEPAGE,
+  ONEPLAYLIST,
+  PLAYLIST,
+  PODCAST,
+  SEARCH,
+} from "../Helpers/Routes";
 import Home from "../Pages/Home";
 
 import PlayLists from "../Components/LeftSidebar/PlayLists";
@@ -15,6 +23,9 @@ import PlaylistDetails from "./PlaylistDetails";
 import LeftSidebar from "../Components/LeftSidebar/LeftSidebar";
 import DefaultNav from "../Components/MiddleComponent/Navigation/index";
 import Search from "./Search";
+import Podcasts from "./Podcasts";
+import Artists from "./Artists";
+import Albums from "./Albums";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -31,7 +42,9 @@ const Homepage = () => {
         background: themes.palette.primary.grey2,
       },
     },
-
+    gridWrapper: {
+      display: "flex",
+    },
     grid1: {
       background: themes.palette.primary.black,
       color: themes.palette.primary.grey3,
@@ -108,6 +121,15 @@ const Homepage = () => {
                   </Route>
                   <Route path={SEARCH}>
                     <Search />
+                  </Route>
+                  <Route path={PODCAST}>
+                    <Podcasts />
+                  </Route>
+                  <Route path={ARTIST}>
+                    <Artists />
+                  </Route>
+                  <Route path={ALBUM}>
+                    <Albums />
                   </Route>
                 </Switch>
               </DefaultNav>
