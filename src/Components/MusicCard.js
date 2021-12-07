@@ -1,4 +1,4 @@
-import { PlayArrow } from "@mui/icons-material";
+import { PlayArrow, Title } from "@mui/icons-material";
 import {
   Card,
   CardActionArea,
@@ -7,14 +7,16 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import pic1 from "../Assets/pic1.jpg";
 import { ONEPLAYLIST } from "../Helpers/Routes";
 import { themes } from "../Helpers/Theme";
 import PauseIcon from "@mui/icons-material/Pause";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDetails } from "../Actions/Actions";
 
-const MusicCard = () => {
+const MusicCard = ({ id, description, images, name }) => {
   const cardStyle = makeStyles((theme) => ({
     root: {
       padding: "15px 20px",
@@ -53,7 +55,7 @@ const MusicCard = () => {
       position: "absolute",
       bottom: "10px",
       right: "12px",
-      pointerEvents: "none",
+      cursor: "auto",
       zIndex: 2,
     },
   }));
@@ -65,9 +67,21 @@ const MusicCard = () => {
 
   const [click, setClick] = useState(false);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setClick(!click);
+  };
+
+  const dispatch = useDispatch();
+
+  const handleDetails = () => {
+    dispatch(fetchDetails(id));
+  };
+
   return (
     <Link
-      to={ONEPLAYLIST}
+      to={`details/${name}`}
+      onClick={handleDetails}
       className={classes.link}
       onMouseEnter={(e) => {
         setMouseHover({
@@ -93,20 +107,20 @@ const MusicCard = () => {
       >
         <Card className={classes.root} style={cardhover}>
           <CardMedia className={classes.media}>
-            <img src={pic1} className={classes.imgStyle} alt="playlist-img" />
+            <img src={images} className={classes.imgStyle} alt="playlist-img" />
             <div
               className={classes.icon}
               style={mousehover}
-              onClick={(e) => setClick(!click)}
+              onClick={handleClick}
             >
               {click ? <PauseIcon /> : <PlayArrow />}
             </div>
           </CardMedia>
           <CardContent className={classes.content}>
             <Typography className={classes.title} variant="smallText">
-              Omah Lay
+              {name}
             </Typography>
-            <Typography>paragraph</Typography>
+            <Typography>{description}</Typography>
           </CardContent>
         </Card>
       </div>

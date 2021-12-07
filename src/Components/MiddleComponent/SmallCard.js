@@ -46,7 +46,7 @@ const SmallCard = () => {
       height: 40,
       borderRadius: "50%",
       padding: 8,
-      cursor: "pointer",
+      cursor: "auto",
       boxShadow: "0 1px 4px rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)",
       background: themes.palette.primary.main,
     },

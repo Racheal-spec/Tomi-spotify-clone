@@ -5,7 +5,7 @@ import { themes } from "../Helpers/Theme";
 import axios from "axios";
 
 import { useSelector } from "react-redux";
-import { Grid } from "@mui/material";
+import { Grid, listItemAvatarClasses } from "@mui/material";
 import MusicCard from "../Components/MusicCard";
 
 const Library = () => {
@@ -46,9 +46,14 @@ const Library = () => {
       </div>
       <div>
         <Grid container spacing={2}>
-          {Playlists.items.map((item) => (
-            <Grid item xl={4} lg={4} xs={12}>
-              <MusicCard />
+          {Playlists.map((list) => (
+            <Grid item xl={4} lg={4} xs={12} key={list.id}>
+              <MusicCard
+                id={list.id}
+                images={list.images[0].url}
+                description={list.description}
+                name={list.name}
+              />
             </Grid>
           ))}
         </Grid>

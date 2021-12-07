@@ -21,7 +21,7 @@ function App() {
       const { access_token, expires_in, token_type } = getBearerToken(
         window.location.hash
       );
-
+      window.location.hash = "";
       localStorage.clear();
 
       localStorage.setItem("token", access_token);
@@ -31,17 +31,8 @@ function App() {
       if (access_token) {
         setBearerToken(access_token);
       }
-      const getUser = async () => {
-        const response = await axios.get(USER_URL, {
-          headers: {
-            Authorization: "Bearer " + access_token,
-          },
-        });
-        dispatch(loadUser(response.data));
-      };
-      getUser();
+      dispatch(loadUser());
     }
-    window.location.hash = "";
   }, []);
 
   return (

@@ -7,7 +7,6 @@ import LibraryNav from "./LibraryNav";
 
 const DefaultNav = ({ children, ...props }) => {
   let location = useLocation();
-  console.log(location);
 
   const PlaylistRegex = new RegExp("^/library");
 

@@ -1,27 +1,26 @@
 const initialState = {
-  Playlists: { items: [] },
+  Playlists: [],
   User: null,
   Token: null,
+  Playlist: [],
 };
 
-const Reducer = (state = initialState, { type, payload }) => {
-  // console.log(action);
-
-  switch (type) {
+const Reducer = (state = initialState, action) => {
+  switch (action.type) {
     case "FETCH_USER":
       return {
         ...state,
-        User: payload,
+        User: action.payload.User,
       };
     case "FETCH_PLAYLISTS":
       return {
         ...state,
-        Playlists: payload,
+        Playlists: action.payload.Playlists,
       };
-    case "FETCH_TOKEN":
+    case "FETCH_DETAILS":
       return {
         ...state,
-        Token: payload,
+        Playlist: action.payload.Playlist,
       };
     default:
       return state;

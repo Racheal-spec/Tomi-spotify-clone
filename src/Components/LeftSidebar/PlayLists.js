@@ -37,24 +37,15 @@ const PlayLists = () => {
   const classes = playlistStyles();
   const dispatch = useDispatch();
 
-  const [access_token, setToken] = useState("");
-
-  //const { token } = useSelector((state) => state.music);
+  //const [Token, setToken] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-    }
-    const getPlaylists = async () => {
-      const response = await axios.get(PLAYLIST_URL, {
-        headers: {
-          Authorization: "Bearer " + access_token,
-        },
-      });
-      dispatch(loadPlaylists(response.data));
-    };
-    getPlaylists();
-  }, [access_token, dispatch]);
+    //if (localStorage.getItem("token")) {
+    //setToken(localStorage.getItem("token"));
+    //}
+
+    dispatch(loadPlaylists());
+  }, [dispatch]);
 
   const Playlists = useSelector((state) => state.music.Playlists);
   console.log(Playlists);
@@ -67,7 +58,7 @@ const PlayLists = () => {
         </Typography>
       </div>
       <div>
-        {Playlists.items.map((item) => (
+        {Playlists.map((item) => (
           <div key={item.id} className={classes.linkDiv}>
             <Link to={item.href} className={classes.link}>
               <p>{item.name}</p>
