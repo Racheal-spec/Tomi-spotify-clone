@@ -30,7 +30,7 @@ export const loadUser = () => async (dispatch) => {
 };
 
 export const fetchDetails = (playlist_id) => async (dispatch) => {
-  const getDetails = await axios.get(PLAYLIST, {
+  const getDetails = await axios.get(PLAYLIST(playlist_id), {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },

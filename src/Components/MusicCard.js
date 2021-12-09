@@ -10,7 +10,7 @@ import { makeStyles } from "@mui/styles";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import pic1 from "../Assets/pic1.jpg";
-import { ONEPLAYLIST } from "../Helpers/Routes";
+import { ONEPLAYLIST, PLAYLIST } from "../Helpers/Routes";
 import { themes } from "../Helpers/Theme";
 import PauseIcon from "@mui/icons-material/Pause";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,7 +80,7 @@ const MusicCard = ({ id, description, images, name }) => {
 
   return (
     <Link
-      to={`details/${name}`}
+      to={`/playlist/${id}`}
       onClick={handleDetails}
       className={classes.link}
       onMouseEnter={(e) => {

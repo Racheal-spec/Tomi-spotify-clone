@@ -7,10 +7,12 @@ import { PLAYLIST_URL } from "../../ApiUrl";
 import { useSelector } from "react-redux";
 import { PlaylistSelector } from "../../Reducers/Reducer";
 import { useDispatch } from "react-redux";
-import { loadPlaylists } from "../../Actions/Actions";
+import { fetchDetails, loadPlaylists } from "../../Actions/Actions";
 import { Link } from "react-router-dom";
+import { ONEPLAYLIST } from "../../Helpers/Routes";
+import SongList from "./SongList";
 
-const PlayLists = () => {
+const PlayLists = ({ id }) => {
   const playlistStyles = makeStyles((theme) => ({
     root: {
       padding: 20,
@@ -37,15 +39,13 @@ const PlayLists = () => {
   const classes = playlistStyles();
   const dispatch = useDispatch();
 
-  //const [Token, setToken] = useState("");
-
   useEffect(() => {
-    //if (localStorage.getItem("token")) {
-    //setToken(localStorage.getItem("token"));
-    //}
-
     dispatch(loadPlaylists());
   }, [dispatch]);
+
+  const handleDetails = () => {
+    dispatch(fetchDetails(id));
+  };
 
   const Playlists = useSelector((state) => state.music.Playlists);
   console.log(Playlists);
@@ -60,9 +60,7 @@ const PlayLists = () => {
       <div>
         {Playlists.map((item) => (
           <div key={item.id} className={classes.linkDiv}>
-            <Link to={item.href} className={classes.link}>
-              <p>{item.name}</p>
-            </Link>
+            <SongList id={item.id} name={item.name} />
           </div>
         ))}
       </div>

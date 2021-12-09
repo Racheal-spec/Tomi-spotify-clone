@@ -10,6 +10,7 @@ const scope = [
   "user-read-playback-state",
   "user-modify-playback-state",
   "user-library-read",
+  //"playlist-read-playlist",
 ];
 
 export const getBearerToken = () => {

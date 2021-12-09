@@ -2,7 +2,7 @@ const initialState = {
   Playlists: [],
   User: null,
   Token: null,
-  Playlist: [],
+  Playlist: {},
 };
 
 const Reducer = (state = initialState, action) => {

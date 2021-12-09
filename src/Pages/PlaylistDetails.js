@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetails } from "../Actions/Actions";
 
-const PlaylistDetails = ({ id }) => {
+const PlaylistDetails = ({ playlist_id }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDetails(id));
-  }, [dispatch, id]);
+    dispatch(fetchDetails(playlist_id));
+  }, [dispatch, playlist_id]);
 
   const Details = useSelector((state) => state.music.Playlist);
   console.log(Details);
+
   return (
     <div>
-      <p>Playlist details</p>
+      <p> {Details.name}</p>
     </div>
   );
 };
