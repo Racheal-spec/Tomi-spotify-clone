@@ -1,19 +1,11 @@
-import { PlayArrow, Title } from "@mui/icons-material";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { PlayArrow } from "@mui/icons-material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import pic1 from "../Assets/pic1.jpg";
-import { ONEPLAYLIST, PLAYLIST } from "../Helpers/Routes";
 import { themes } from "../Helpers/Theme";
 import PauseIcon from "@mui/icons-material/Pause";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchDetails } from "../Actions/Actions";
 
 const MusicCard = ({ id, description, images, name }) => {

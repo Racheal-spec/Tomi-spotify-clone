@@ -15,8 +15,12 @@ const Navbar = ({ children }) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingTop: 2,
+      padding: "6px 17px",
       backgroundColor: themes.palette.primary.grey2,
+    },
+    barWrapper: {
+      display: "flex",
+      alignItems: "center",
     },
     profile: {
       display: "flex",
@@ -28,11 +32,9 @@ const Navbar = ({ children }) => {
       padding: "4px 0",
     },
     arrow: {
-      width: 45,
-      height: 45,
-      borderRadius: 50,
+      borderRadius: 20,
       margin: "10px 12px",
-      padding: "4px 4px 6px 5px",
+      padding: "4px 8px 6px 8px",
       backgroundColor: themes.palette.primary.dark,
       cursor: "pointer",
     },
@@ -42,7 +44,7 @@ const Navbar = ({ children }) => {
       padding: "6px 30px",
       borderRadius: 30,
       border: "1px solid #FAF9F6",
-      marginLeft: 200,
+      marginRight: 30,
     },
     upgradeLink: {
       color: themes.palette.primary.offwhite,
@@ -71,30 +73,32 @@ const Navbar = ({ children }) => {
     <>
       <div className={classes.root}>
         <div>
-          <ArrowBackIos className={classes.arrow} />
-          <ArrowForwardIos className={classes.arrow} />
+          <ArrowBackIos className={classes.arrow} fontSize="large" />
+          <ArrowForwardIos className={classes.arrow} fontSize="large" />
         </div>
 
-        <div className={classes.upgrade}>
-          <Link
-            to="https://www.spotify.com/ng/premium/"
-            className={classes.upgradeLink}
-          >
-            upgrade
-          </Link>
-        </div>
+        <div className={classes.barWrapper}>
+          <div className={classes.upgrade}>
+            <Link
+              to="https://www.spotify.com/ng/premium/"
+              className={classes.upgradeLink}
+            >
+              upgrade
+            </Link>
+          </div>
 
-        <div className={classes.profile} onClick={handleClick}>
-          <Avatar
-            src={User?.images[0].url}
-            style={{ width: "25px", height: "25px" }}
-          />
-          <p className={classes.margin}>Tomisin</p>
-          {clickArrow ? (
-            <ArrowDropDownOutlinedIcon />
-          ) : (
-            <ArrowDropUpOutlinedIcon />
-          )}
+          <div className={classes.profile} onClick={handleClick}>
+            <Avatar
+              src={User?.images[0].url}
+              style={{ width: "25px", height: "25px" }}
+            />
+            <p className={classes.margin}>Tomisin</p>
+            {clickArrow ? (
+              <ArrowDropDownOutlinedIcon />
+            ) : (
+              <ArrowDropUpOutlinedIcon />
+            )}
+          </div>
         </div>
       </div>
       {children}

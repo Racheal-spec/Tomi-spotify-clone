@@ -7,7 +7,6 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
-import PlayLists from "./PlayLists";
 import { PLAYLIST, SEARCH } from "../../Helpers/Routes";
 import { FavoriteRounded } from "@mui/icons-material";
 
