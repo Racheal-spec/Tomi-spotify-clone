@@ -15,12 +15,8 @@ import SongList from "./SongList";
 const PlayLists = ({ id }) => {
   const playlistStyles = makeStyles((theme) => ({
     root: {
-      padding: 20,
+      padding: "5px 20px",
       width: "100vh",
-    },
-    list: {
-      display: "flex",
-      flexDirection: "column",
     },
     link: {
       color: themes.palette.primary.grey3,
@@ -43,20 +39,11 @@ const PlayLists = ({ id }) => {
     dispatch(loadPlaylists());
   }, [dispatch]);
 
-  const handleDetails = () => {
-    dispatch(fetchDetails(id));
-  };
-
   const Playlists = useSelector((state) => state.music.Playlists);
   console.log(Playlists);
 
   return (
     <div className={classes.root}>
-      <div className={classes.list}>
-        <Typography variant="smallText" fontWeight="bold">
-          Playlists
-        </Typography>
-      </div>
       <div>
         {Playlists.map((item) => (
           <div key={item.id} className={classes.linkDiv}>

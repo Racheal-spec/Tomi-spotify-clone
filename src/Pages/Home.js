@@ -7,6 +7,7 @@ import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
 import Navbar from "../Components/MiddleComponent/Navigation/Navbar";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -44,15 +45,17 @@ const Home = () => {
 
   const classes = homeStyles();
 
+  const Playlists = useSelector((state) => state.music.Playlists);
+
   return (
     <div className={classes.homeWrapper}>
       <Typography variant="h4" className={classes.spaceY}>
         Good afternoon
       </Typography>
       <Grid container spacing={2} className={classes.CardContainer}>
-        {[0, 1, 2, 3].map((item) => (
+        {Playlists.slice(0, 4).map((item) => (
           <Grid item xl={6} lg={6} xs={12}>
-            <SmallCard />
+            <SmallCard id={item.id} name={item.name} />
           </Grid>
         ))}
       </Grid>

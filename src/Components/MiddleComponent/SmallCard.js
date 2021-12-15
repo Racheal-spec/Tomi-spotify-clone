@@ -6,8 +6,11 @@ import { PlayArrow } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { ONEPLAYLIST } from "../../Helpers/Routes";
 import PauseIcon from "@mui/icons-material/Pause";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDetails } from "../../Actions/Actions";
+import { useParams } from "react-router";
 
-const SmallCard = () => {
+const SmallCard = ({ id, name }) => {
   const smallCardStyle = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -63,23 +66,32 @@ const SmallCard = () => {
     e.preventDefault();
     setClick(!click);
   };
+  const dispatch = useDispatch();
+
+  const handleDetails = () => {
+    dispatch(fetchDetails(id));
+  };
+
   return (
     <Link
-      to={ONEPLAYLIST}
+      to={`/playlist/${id}`}
+      onClick={handleDetails}
       className={classes.link}
-      onMouseEnter={(e) => {
-        setMouseHover({ opacity: "1" });
-      }}
-      onMouseLeave={(e) => {
-        setMouseHover({ opacity: "0" });
-      }}
     >
-      <div className={classes.root}>
+      <div
+        className={classes.root}
+        onMouseEnter={(e) => {
+          setMouseHover({ opacity: "1" });
+        }}
+        onMouseLeave={(e) => {
+          setMouseHover({ opacity: "0" });
+        }}
+      >
         <div className={classes.cardWrapper}>
           <img src={girl3} className={classes.postalImg} alt="postal" />
           <div className={classes.grid2}>
             <div>
-              <strong>Liked songs</strong>
+              <strong>{name}</strong>
             </div>
             <div
               className={classes.icon}

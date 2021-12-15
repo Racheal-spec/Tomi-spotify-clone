@@ -16,6 +16,7 @@ const Navbar = ({ children }) => {
       alignItems: "center",
       justifyContent: "space-between",
       paddingTop: 2,
+      backgroundColor: themes.palette.primary.grey2,
     },
     profile: {
       display: "flex",
