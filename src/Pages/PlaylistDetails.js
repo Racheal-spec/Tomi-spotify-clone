@@ -111,7 +111,7 @@ const PlaylistDetails = ({ playlist_id }) => {
               />
             </Grid>
             <Grid item lg={8} className={classes.sideGrid}>
-              <strong>PLAYLIST</strong>
+              <Typography variant="smallerText">PLAYLIST</Typography>
               <Typography variant="h2" className={classes.boldName}>
                 {Details?.name}
               </Typography>

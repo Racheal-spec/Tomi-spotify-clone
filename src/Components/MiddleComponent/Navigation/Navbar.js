@@ -15,7 +15,7 @@ const Navbar = ({ children }) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "6px 17px",
+      padding: "0px 17px",
       backgroundColor: themes.palette.primary.grey2,
     },
     barWrapper: {
