@@ -50,6 +50,9 @@ const Homepage = () => {
       color: themes.palette.primary.grey3,
       height: "calc(100vh + 30vh)",
       width: "20%",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     grid2: {
       background: themes.palette.primary.dark,
@@ -57,12 +60,18 @@ const Homepage = () => {
       height: "calc(100vh + 30vh)",
       width: "60%",
       paddingBottom: 100,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
     grid3: {
       background: themes.palette.primary.grey1,
       color: themes.palette.primary.grey3,
       height: "calc(100vh + 30vh)",
       width: "20%",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
 
     footerControls: {

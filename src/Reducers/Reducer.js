@@ -3,6 +3,7 @@ const initialState = {
   User: null,
   Token: null,
   Playlist: null,
+  Playsong: {},
 };
 
 const Reducer = (state = initialState, action) => {
@@ -21,6 +22,11 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         Playlist: action.payload.Playlist,
+      };
+    case "PLAY_SONG":
+      return {
+        ...state,
+        Playsong: action.payload.Playsong,
       };
     default:
       return state;

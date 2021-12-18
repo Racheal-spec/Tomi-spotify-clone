@@ -96,6 +96,10 @@ const PlaylistDetails = ({ playlist_id }) => {
 
   const User = useSelector((state) => state.music.User);
 
+  const Play = useSelector((state) => state.music.Playsong);
+
+  console.log(Play);
+
   return (
     <>
       {load ? (
@@ -159,8 +163,8 @@ const PlaylistDetails = ({ playlist_id }) => {
           </div>
         </Box>
         <Box className={classes.songList}>
-          {Details?.tracks.items.map((item) => (
-            <SongList key={item.id} track={item.track} />
+          {Details?.tracks.items.map((item, index) => (
+            <SongList key={item.id} track={item.track} list={index} />
           ))}
         </Box>
       </div>

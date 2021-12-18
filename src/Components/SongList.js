@@ -6,7 +6,7 @@ import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
 
-const SongList = ({ track }) => {
+const SongList = ({ track, list }) => {
   const songListStyles = makeStyles((theme) => ({
     root: {
       display: "grid",
@@ -35,18 +35,19 @@ const SongList = ({ track }) => {
   }));
   const classes = songListStyles();
 
-  const [mousehover, setMouseHover] = useState({ opacity: 1 });
+  const [mousehover, setMouseHover] = useState({ opacity: 0 });
+  const [changehover, setChangeHover] = useState(list + 1);
   const [click, setClick] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
+
     setClick(!click);
   };
 
   const convertMS = (ms) => {
     let seconds, minutes, hour;
     seconds = Math.floor(ms / 1000);
-
     minutes = Math.floor(seconds / 60);
     seconds = seconds % 60;
     minutes = minutes % 60;
@@ -68,15 +69,21 @@ const SongList = ({ track }) => {
         setMouseHover({
           opacity: 1,
         });
+        setChangeHover(PlayArrow);
       }}
       onMouseLeave={(e) => {
         setMouseHover({
           opacity: 0,
         });
+        setChangeHover();
       }}
     >
-      <div style={mousehover} onClick={handleClick}>
-        {click ? <PauseIcon /> : <PlayArrow />}
+      <div onClick={handleClick}>
+        {changehover ? (
+          <div>{click ? <PlayArrow /> : <PauseIcon />}</div>
+        ) : (
+          list + 1
+        )}
       </div>
       <div className={classes.imgtextDiv}>
         <div>

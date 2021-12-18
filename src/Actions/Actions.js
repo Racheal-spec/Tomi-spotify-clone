@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PLAYLIST, PLAYLIST_URL, USER_URL } from "../ApiUrl";
+import { PLAYLIST, PLAYLIST_URL, PLAYURL, USER_URL } from "../ApiUrl";
 
 export const loadPlaylists = () => async (dispatch) => {
   const getPlaylists = await axios.get(PLAYLIST_URL, {
@@ -39,6 +39,20 @@ export const fetchDetails = (playlist_id) => async (dispatch) => {
     type: "FETCH_DETAILS",
     payload: {
       Playlist: getDetails.data,
+    },
+  });
+};
+
+export const Player = () => async (dispatch) => {
+  const PlayData = axios.put(PLAYURL, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  dispatch({
+    type: "PLAY_SONG",
+    payload: {
+      Playsong: PlayData.data,
     },
   });
 };

@@ -54,7 +54,7 @@ const Home = () => {
       </Typography>
       <Grid container spacing={2} className={classes.CardContainer}>
         {Playlists.slice(0, 4).map((item) => (
-          <Grid item xl={6} lg={6} xs={12}>
+          <Grid item xl={6} lg={6} xs={12} key={item.id}>
             <SmallCard id={item.id} name={item.name} />
           </Grid>
         ))}
