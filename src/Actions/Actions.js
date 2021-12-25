@@ -43,16 +43,8 @@ export const fetchDetails = (playlist_id) => async (dispatch) => {
   });
 };
 
-export const Player = () => async (dispatch) => {
-  const PlayData = axios.put(PLAYURL, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-  dispatch({
+export const togglePlayer = () => {
+  return {
     type: "PLAY_SONG",
-    payload: {
-      Playsong: PlayData.data,
-    },
-  });
+  };
 };

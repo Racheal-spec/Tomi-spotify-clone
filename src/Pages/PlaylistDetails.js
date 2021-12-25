@@ -91,14 +91,9 @@ const PlaylistDetails = ({ playlist_id }) => {
     setLoad(false);
   }, [dispatch, id]);
 
-  const Details = useSelector((state) => state.music.Playlist);
-  console.log(Details);
+  const Details = useSelector((state) => state.details.Playlist);
 
   const User = useSelector((state) => state.music.User);
-
-  const Play = useSelector((state) => state.music.Playsong);
-
-  console.log(Play);
 
   return (
     <>
@@ -106,7 +101,7 @@ const PlaylistDetails = ({ playlist_id }) => {
         <Typography variant="h1">Loading...</Typography>
       ) : (
         <div className={classes.root}>
-          <Grid container alignItems="center">
+          <Grid container alignItems="center" key={Details?.id}>
             <Grid item lg={4}>
               <img
                 src={Details?.images[0].url}
@@ -164,7 +159,12 @@ const PlaylistDetails = ({ playlist_id }) => {
         </Box>
         <Box className={classes.songList}>
           {Details?.tracks.items.map((item, index) => (
-            <SongList key={item.id} track={item.track} list={index} />
+            <SongList
+              key={item.id}
+              track={item.track}
+              list={index}
+              trackuri={item.track.uri}
+            />
           ))}
         </Box>
       </div>

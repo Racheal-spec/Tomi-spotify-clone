@@ -5,12 +5,15 @@ const clientID = "fc56128a1d2e41e485c96c36ba2434ad";
 const redirectURI = "http://localhost:3000/";
 
 const scope = [
+  "user-read-email",
+  "user-read-private",
   "user-read-currently-playing",
   "user-read-recently-played",
   "user-read-playback-state",
   "user-modify-playback-state",
   "user-library-read",
-  //"playlist-read-playlist",
+  "streaming",
+  "user-library-modify",
 ];
 
 export const getBearerToken = () => {

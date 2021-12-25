@@ -1,9 +1,8 @@
 const initialState = {
   Playlists: [],
   User: null,
-  Token: null,
-  Playlist: null,
-  Playsong: {},
+  TrackId: null,
+  isPlaying: false,
 };
 
 const Reducer = (state = initialState, action) => {
@@ -18,15 +17,16 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Playlists: action.payload.Playlists,
       };
-    case "FETCH_DETAILS":
+
+    case "ISPLAYING":
       return {
         ...state,
-        Playlist: action.payload.Playlist,
+        isPlaying: true,
       };
-    case "PLAY_SONG":
+    case "TRACKID":
       return {
         ...state,
-        Playsong: action.payload.Playsong,
+        TrackId: action.payload.TrackId,
       };
     default:
       return state;

@@ -1,43 +1,23 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../../Helpers/Theme";
-import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
-import FastForwardIcon from "@mui/icons-material/FastForward";
-import FastRewindIcon from "@mui/icons-material/FastRewind";
-import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import ShuffleIcon from "@mui/icons-material/Shuffle";
-import RepeatIcon from "@mui/icons-material/Repeat";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import pic1 from "../../Assets/pic1.jpg";
+import CenterController from "./CenterController";
+import SpotifyPlayer from "react-spotify-web-playback";
+import { connect, useSelector } from "react-redux";
+import SpotifyWebPlayer from "react-spotify-web-playback";
 
-const ControlsWrapper = () => {
+const ControlsWrapper = (props) => {
   const controlStyles = makeStyles((theme) => ({
     root: {
       position: "fixed",
       bottom: 0,
       width: "100%",
     },
-    icon: {
-      color: themes.palette.primary.grey3,
-      cursor: "pointer",
-      "&:hover": {
-        color: themes.palette.primary.white,
-      },
-      "&:focus": {
-        color: themes.palette.primary.white,
-      },
-    },
-    iconDiv: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "5px 0",
-    },
-    middleBtn: {
-      margin: "0 13px",
-    },
+
     slider: {
       width: "40%",
       margin: "0 auto",
@@ -50,9 +30,7 @@ const ControlsWrapper = () => {
       fontWeight: "bold",
       color: themes.palette.primary.grey3,
     },
-    spacing: {
-      padding: "0 30px",
-    },
+
     preview: {
       position: "absolute",
       display: "flex",
@@ -90,8 +68,33 @@ const ControlsWrapper = () => {
   const handleClick = () => {
     setClick(!click);
   };
-
+  let accessToken = localStorage.getItem("token");
+  const Details = useSelector((state) => state.details.Playlist);
+  console.log(Details);
   return (
+    <>
+      <div className={classes.root}>
+        <SpotifyWebPlayer
+          token={accessToken}
+          showSaveIcon
+          uris={["spotify:playlist:18cj7j2WIeSk1iLF8gqglk"]}
+          styles={{
+            height: 80,
+            width: "100%",
+            bgColor: themes.palette.primary.grey4,
+            activeColor: themes.palette.primary.white,
+            trackNameColor: themes.palette.primary.white,
+            trackArtistColor: themes.palette.primary.grey2,
+            padding: "0 50px",
+            color: "#fff",
+            position: "fixed",
+            bottom: 0,
+            zIndex: 999,
+          }}
+        />
+      </div>
+
+      {/*
     <div className={classes.root}>
       <div className={classes.preview}>
         <div className={classes.previewDiv}>
@@ -105,23 +108,9 @@ const ControlsWrapper = () => {
           <FavoriteIcon className={classes.favourite} />
         </div>
       </div>
-      <div className={classes.iconDiv}>
-        <div className={classes.spacing}>
-          <ShuffleIcon fontSize="small" className={classes.icon} />
-        </div>
-        <FastRewindIcon className={classes.icon} />
-        <div className={classes.middleBtn} onClick={handleClick}>
-          {click ? (
-            <PlayCircleFilledIcon fontSize="large" className={classes.icon} />
-          ) : (
-            <PauseCircleIcon fontSize="large" className={classes.icon} />
-          )}
-        </div>
-        <FastForwardIcon className={classes.icon} />
-        <div className={classes.spacing}>
-          <RepeatIcon fontSize="small" className={classes.icon} />
-        </div>
-      </div>
+
+      <CenterController />
+
       <div className={classes.slider}>
         <div className={classes.timeNo}>
           <Typography fontSize="small">0.00</Typography>
@@ -135,7 +124,11 @@ const ControlsWrapper = () => {
           <Typography fontSize="small">5.00</Typography>
         </div>
       </div>
+
+    
     </div>
+    */}
+    </>
   );
 };
 

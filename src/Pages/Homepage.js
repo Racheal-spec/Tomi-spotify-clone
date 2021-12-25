@@ -73,15 +73,7 @@ const Homepage = () => {
         display: "none",
       },
     },
-
-    footerControls: {
-      height: 80,
-      width: "100%",
-      backgroundColor: themes.palette.primary.grey4,
-      position: "fixed",
-      bottom: 0,
-      zIndex: 999,
-    },
+    footerControls: {},
     listScroll: {
       "&::-webkit-scrollbar": {
         width: "0.4em",
@@ -98,6 +90,8 @@ const Homepage = () => {
   }));
 
   const classes = homeStyles();
+
+  let accessToken = localStorage.getItem("token");
 
   return (
     <div className={classes.homeWrapper}>
@@ -151,7 +145,7 @@ const Homepage = () => {
         </Grid>
       </Router>
       <div className={classes.footerControls}>
-        <ControlsWrapper />
+        <ControlsWrapper accessToken={accessToken} />
       </div>
     </div>
   );

@@ -5,8 +5,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
+import { connect, useSelector } from "react-redux";
+import { togglePlayer } from "../Actions/Actions";
+import LeftControl from "./ControlsContainer/LeftControl";
 
-const SongList = ({ track, list }) => {
+const SongList = ({ track, list, trackuri }) => {
   const songListStyles = makeStyles((theme) => ({
     root: {
       display: "grid",
@@ -36,13 +39,27 @@ const SongList = ({ track, list }) => {
   const classes = songListStyles();
 
   const [mousehover, setMouseHover] = useState({ opacity: 0 });
-  const [changehover, setChangeHover] = useState(list + 1);
+  const [changehover, setChangeHover] = useState();
   const [click, setClick] = useState(false);
+
+  const trackid = useSelector((state) => state.music.TrackId);
+  const isPlaying = useSelector((state) => state.music.isPlaying);
+
+  const [play, setPlay] = useState(isPlaying);
+
+  let audio = new Audio();
 
   const handleClick = (e) => {
     e.preventDefault();
-
     setClick(!click);
+    if (!isPlaying) {
+      audio.play({
+        uris: [trackuri],
+      });
+      console.log(audio.play);
+    } else {
+      audio.pause();
+    }
   };
 
   const convertMS = (ms) => {
@@ -62,9 +79,19 @@ const SongList = ({ track, list }) => {
 
   const duration = convertMS(track.duration_ms);
 
+  const PlaySong = () => {
+    if (!isPlaying) {
+      console.log("hiiii");
+      return <LeftControl />;
+    } else {
+      setPlay(isPlaying);
+    }
+  };
+
   return (
     <div
       className={classes.root}
+      onClick={PlaySong}
       onMouseEnter={(e) => {
         setMouseHover({
           opacity: 1,
@@ -78,9 +105,11 @@ const SongList = ({ track, list }) => {
         setChangeHover();
       }}
     >
-      <div onClick={handleClick}>
+      <div style={{ fontSize: "20px" }} onClick={handleClick}>
         {changehover ? (
-          <div>{click ? <PlayArrow /> : <PauseIcon />}</div>
+          <div onClick={handleClick}>
+            {click ? <PauseIcon /> : <PlayArrow />}
+          </div>
         ) : (
           list + 1
         )}

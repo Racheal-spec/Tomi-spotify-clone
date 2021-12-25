@@ -78,14 +78,18 @@ const Navbar = ({ children }) => {
         </div>
 
         <div className={classes.barWrapper}>
-          <div className={classes.upgrade}>
-            <Link
-              to="https://www.spotify.com/ng/premium/"
-              className={classes.upgradeLink}
-            >
-              upgrade
-            </Link>
-          </div>
+          {User?.product !== "premium" ? (
+            <div className={classes.upgrade}>
+              <Link
+                to="https://www.spotify.com/ng/premium/"
+                className={classes.upgradeLink}
+              >
+                upgrade
+              </Link>
+            </div>
+          ) : (
+            ""
+          )}
 
           <div className={classes.profile} onClick={handleClick}>
             <Avatar

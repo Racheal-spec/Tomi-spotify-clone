@@ -53,7 +53,7 @@ const Search = () => {
 
       <Grid container spacing={2} className={classes.CardContainer}>
         {[0, 1, 2].map((item) => (
-          <Grid item xl={4} lg={4} md={6} xs={12}>
+          <Grid item xl={4} lg={4} md={6} xs={12} key={item.id}>
             <MusicCard />
           </Grid>
         ))}
