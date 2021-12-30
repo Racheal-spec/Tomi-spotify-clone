@@ -8,6 +8,7 @@ import { themes } from "../../../Helpers/Theme";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 import { ALBUM, ARTIST, PLAYLIST, PODCAST } from "../../../Helpers/Routes";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const LibraryNav = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
@@ -69,14 +70,20 @@ const LibraryNav = ({ children }) => {
 
   const User = useSelector((state) => state.music.User);
 
-  console.log(User);
+  let history = useHistory();
 
   return (
     <>
       <div className={classes.root}>
         <div>
-          <ArrowBackIos className={classes.arrow} />
-          <ArrowForwardIos className={classes.arrow} />
+          <ArrowBackIos
+            className={classes.arrow}
+            onClick={() => history.goBack()}
+          />
+          <ArrowForwardIos
+            className={classes.arrow}
+            onClick={() => history.goForward()}
+          />
         </div>
 
         <div className={classes.libNav}>

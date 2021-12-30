@@ -8,6 +8,7 @@ import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Navbar = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
@@ -67,14 +68,22 @@ const Navbar = ({ children }) => {
 
   const User = useSelector((state) => state.music.User);
 
-  console.log(User);
+  let history = useHistory();
 
   return (
     <>
       <div className={classes.root}>
         <div>
-          <ArrowBackIos className={classes.arrow} fontSize="large" />
-          <ArrowForwardIos className={classes.arrow} fontSize="large" />
+          <ArrowBackIos
+            className={classes.arrow}
+            fontSize="large"
+            onClick={() => history.goBack()}
+          />
+          <ArrowForwardIos
+            className={classes.arrow}
+            fontSize="large"
+            onClick={() => history.goForward()}
+          />
         </div>
 
         <div className={classes.barWrapper}>
