@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../Helpers/Theme";
 import { Grid, Typography } from "@mui/material";
@@ -7,7 +7,13 @@ import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
 import Navbar from "../Components/MiddleComponent/Navigation/Navbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchFeaturedPlaylists,
+  fetchNewReleases,
+  fetchTopTracks,
+} from "../Actions/Actions";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -45,7 +51,29 @@ const Home = () => {
 
   const classes = homeStyles();
 
+  const dispatch = useDispatch();
+
+  const User = useSelector((state) => state.music.User);
+
+  //const userCountry = User.country;
+
+  const id = useParams().playlist_id;
+
+  console.log(id);
+  useEffect(() => {
+    dispatch(fetchNewReleases());
+    dispatch(fetchFeaturedPlaylists());
+  }, [dispatch]);
+
   const Playlists = useSelector((state) => state.music.Playlists);
+  const Newreleases = useSelector((state) => state.music.Newreleases);
+  const Featuredplaylists = useSelector(
+    (state) => state.music.Featuredplaylists
+  );
+  const Toptracks = useSelector((state) => state.music.Toptracks);
+  const Recentlyplayed = useSelector((state) => state.music.Recentlyplayed);
+  console.log(Toptracks);
+  console.log(Recentlyplayed);
 
   return (
     <div className={classes.homeWrapper}>
@@ -55,14 +83,18 @@ const Home = () => {
       <Grid container spacing={2} className={classes.CardContainer}>
         {Playlists.slice(0, 4).map((item) => (
           <Grid item xl={6} lg={6} xs={12} key={item.id}>
-            <SmallCard id={item.id} name={item.name} />
+            <SmallCard
+              id={item.id}
+              name={item.name}
+              images={item.images[0].url}
+            />
           </Grid>
         ))}
       </Grid>
 
       <div className={classes.titleDiv}>
         <div className={classes.title}>
-          <Typography variant="h5">Your top mixes</Typography>
+          <Typography variant="h5">New Releases</Typography>
         </div>
         <div>
           <Link to={HOMEPAGE} className={classes.seeAll}>
@@ -71,11 +103,42 @@ const Home = () => {
         </div>
       </div>
       <Grid container spacing={2}>
-        {[0, 1, 2].map((item) => (
-          <Grid item xl={4} lg={4} xs={12}>
-            <MusicCard />
-          </Grid>
-        ))}
+        {Newreleases?.albums.items &&
+          Newreleases?.albums.items.slice(0, 3).map((item) => (
+            <Grid item xl={4} lg={4} xs={12}>
+              <MusicCard
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                images={item.images[0].url}
+              />
+            </Grid>
+          ))}
+      </Grid>
+
+      <div className={classes.titleDiv}>
+        <div className={classes.title}>
+          <Typography variant="h5">{Featuredplaylists?.message}</Typography>
+        </div>
+        <div>
+          <Link to={HOMEPAGE} className={classes.seeAll}>
+            SEE ALL
+          </Link>
+        </div>
+      </div>
+      <Grid container spacing={2}>
+        {Featuredplaylists?.playlists.items &&
+          Featuredplaylists?.playlists.items.slice(0, 5).map((item) => (
+            <Grid item xl={4} lg={4} xs={12}>
+              <MusicCard
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                images={item.images[0].url}
+                description={item.description}
+              />
+            </Grid>
+          ))}
       </Grid>
 
       <div className={classes.titleDiv}>
@@ -89,11 +152,43 @@ const Home = () => {
         </div>
       </div>
       <Grid container spacing={2}>
-        {[0, 1, 2].map((item) => (
-          <Grid item xl={4} lg={4} xs={12}>
-            <MusicCard />
-          </Grid>
-        ))}
+        {Recentlyplayed &&
+          Recentlyplayed?.map((item) => (
+            <Grid item xl={4} lg={4} xs={12}>
+              <MusicCard
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                images={item.images[0].url}
+                description={item.description}
+              />
+            </Grid>
+          ))}
+      </Grid>
+
+      <div className={classes.titleDiv}>
+        <div className={classes.title}>
+          <Typography variant="h5">Top Tracks</Typography>
+        </div>
+        <div>
+          <Link to={HOMEPAGE} className={classes.seeAll}>
+            SEE ALL
+          </Link>
+        </div>
+      </div>
+      <Grid container spacing={2}>
+        {Toptracks &&
+          Toptracks?.map((item) => (
+            <Grid item xl={4} lg={4} xs={12}>
+              <MusicCard
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                images={item.images[0].url}
+                description={item.description}
+              />
+            </Grid>
+          ))}
       </Grid>
     </div>
   );

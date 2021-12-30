@@ -6,10 +6,8 @@ import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
 import { connect, useSelector } from "react-redux";
-import { togglePlayer } from "../Actions/Actions";
-import LeftControl from "./ControlsContainer/LeftControl";
 
-const SongList = ({ track, list, trackuri }) => {
+const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   const songListStyles = makeStyles((theme) => ({
     root: {
       display: "grid",
@@ -42,24 +40,13 @@ const SongList = ({ track, list, trackuri }) => {
   const [changehover, setChangeHover] = useState();
   const [click, setClick] = useState(false);
 
-  const trackid = useSelector((state) => state.music.TrackId);
+  const trackId = useSelector((state) => state.music.trackId);
   const isPlaying = useSelector((state) => state.music.isPlaying);
-
-  const [play, setPlay] = useState(isPlaying);
-
-  let audio = new Audio();
 
   const handleClick = (e) => {
     e.preventDefault();
+
     setClick(!click);
-    if (!isPlaying) {
-      audio.play({
-        uris: [trackuri],
-      });
-      console.log(audio.play);
-    } else {
-      audio.pause();
-    }
   };
 
   const convertMS = (ms) => {
@@ -79,19 +66,10 @@ const SongList = ({ track, list, trackuri }) => {
 
   const duration = convertMS(track.duration_ms);
 
-  const PlaySong = () => {
-    if (!isPlaying) {
-      console.log("hiiii");
-      return <LeftControl />;
-    } else {
-      setPlay(isPlaying);
-    }
-  };
-
   return (
     <div
+      key={track.id}
       className={classes.root}
-      onClick={PlaySong}
       onMouseEnter={(e) => {
         setMouseHover({
           opacity: 1,

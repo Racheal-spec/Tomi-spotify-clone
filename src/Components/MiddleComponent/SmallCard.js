@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDetails } from "../../Actions/Actions";
 import { useParams } from "react-router";
 
-const SmallCard = ({ id, name }) => {
+const SmallCard = ({ id, name, images }) => {
   const smallCardStyle = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -88,7 +88,7 @@ const SmallCard = ({ id, name }) => {
         }}
       >
         <div className={classes.cardWrapper}>
-          <img src={girl3} className={classes.postalImg} alt="postal" />
+          <img src={images} className={classes.postalImg} alt="postal" />
           <div className={classes.grid2}>
             <div>
               <strong>{name}</strong>

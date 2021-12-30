@@ -5,12 +5,11 @@ import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import pic1 from "../../Assets/pic1.jpg";
-import CenterController from "./CenterController";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { connect, useSelector } from "react-redux";
 import SpotifyWebPlayer from "react-spotify-web-playback";
 
-const ControlsWrapper = (props) => {
+const ControlsWrapper = ({ trackuri }) => {
   const controlStyles = makeStyles((theme) => ({
     root: {
       position: "fixed",
@@ -70,14 +69,14 @@ const ControlsWrapper = (props) => {
   };
   let accessToken = localStorage.getItem("token");
   const Details = useSelector((state) => state.details.Playlist);
-  console.log(Details);
+
   return (
     <>
       <div className={classes.root}>
         <SpotifyWebPlayer
           token={accessToken}
           showSaveIcon
-          uris={["spotify:playlist:18cj7j2WIeSk1iLF8gqglk"]}
+          uris={trackuri ? [trackuri] : []}
           styles={{
             height: 80,
             width: "100%",

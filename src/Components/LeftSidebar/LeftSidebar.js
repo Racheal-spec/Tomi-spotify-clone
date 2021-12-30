@@ -12,19 +12,6 @@ import { FavoriteRounded } from "@mui/icons-material";
 
 const LeftSidebar = () => {
   const controlStyles = makeStyles((theme) => ({
-    /*
-    "@global": {
-      "*::-webkit-scrollbar": {
-        width: 10,
-      },
-      "*::-webkit-scrollbar-track": {
-        borderRadius: 10,
-      },
-      "*::-webkit-scrollbar-thumb": {
-        background: themes.palette.primary.grey2,
-      },
-    },
-    */
     root: {
       padding: "7px 0",
       "*::-webkit-scrollbar": {

@@ -14,6 +14,7 @@ const scope = [
   "user-library-read",
   "streaming",
   "user-library-modify",
+  "user-top-read",
 ];
 
 export const getBearerToken = () => {

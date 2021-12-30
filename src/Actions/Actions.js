@@ -1,5 +1,13 @@
 import axios from "axios";
-import { PLAYLIST, PLAYLIST_URL, PLAYURL, USER_URL } from "../ApiUrl";
+import {
+  FEATURED_PLAYLISTS,
+  NEWRELEASES,
+  PLAYLIST,
+  PLAYLIST_URL,
+  RECENTLY_PLAYED,
+  TOPTRACKS,
+  USER_URL,
+} from "../ApiUrl";
 
 export const loadPlaylists = () => async (dispatch) => {
   const getPlaylists = await axios.get(PLAYLIST_URL, {
@@ -43,8 +51,58 @@ export const fetchDetails = (playlist_id) => async (dispatch) => {
   });
 };
 
-export const togglePlayer = () => {
-  return {
-    type: "PLAY_SONG",
-  };
+export const fetchNewReleases = () => async (dispatch) => {
+  const getNewReleases = await axios.get(NEWRELEASES, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  dispatch({
+    type: "FETCH_NEWRELEASES",
+    payload: {
+      Newreleases: getNewReleases.data,
+    },
+  });
+};
+
+export const fetchFeaturedPlaylists = () => async (dispatch) => {
+  const getFeaturedPlaylists = await axios.get(FEATURED_PLAYLISTS, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  dispatch({
+    type: "FETCH_FEATUREDPLAYLISTS",
+    payload: {
+      Featuredplaylists: getFeaturedPlaylists.data,
+    },
+  });
+};
+
+export const fetchToptracks = () => async (dispatch) => {
+  const getToptracks = await axios.get(TOPTRACKS, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  dispatch({
+    type: "FETCH_RECENTLYPLAYED",
+    payload: {
+      Recentlyplayed: getToptracks.data,
+    },
+  });
+};
+
+export const fetchRecentlyPlayed = () => async (dispatch) => {
+  const getRecentlyPlayed = await axios.get(RECENTLY_PLAYED, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  dispatch({
+    type: "FETCH_RECENTLYPLAYED",
+    payload: {
+      Recentlyplayed: getRecentlyPlayed.data,
+    },
+  });
 };

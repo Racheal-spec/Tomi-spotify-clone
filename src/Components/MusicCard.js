@@ -112,7 +112,9 @@ const MusicCard = ({ id, description, images, name }) => {
             <Typography className={classes.title} variant="smallText">
               {name}
             </Typography>
-            <Typography>{description}</Typography>
+            <div>
+              <Typography variant="smallerText">{description}</Typography>
+            </div>
           </CardContent>
         </Card>
       </div>

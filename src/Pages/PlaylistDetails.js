@@ -15,7 +15,7 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 
-const PlaylistDetails = ({ playlist_id }) => {
+const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
   const DetailsStyles = makeStyles((theme) => ({
     root: {
       background: `linear-gradient(to bottom,${themes.palette.primary.grey2}, ${themes.palette.primary.grey1} )`,
@@ -95,6 +95,8 @@ const PlaylistDetails = ({ playlist_id }) => {
 
   const User = useSelector((state) => state.music.User);
 
+  const isPlaying = useSelector((state) => state.music.isPlaying);
+
   return (
     <>
       {load ? (
@@ -164,6 +166,7 @@ const PlaylistDetails = ({ playlist_id }) => {
               track={item.track}
               list={index}
               trackuri={item.track.uri}
+              chooseTrack={chooseTrack}
             />
           ))}
         </Box>

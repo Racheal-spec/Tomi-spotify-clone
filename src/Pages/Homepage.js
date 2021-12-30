@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 
 import RightSidebar from "../Components/RightSidebar/RightSidebar";
@@ -26,6 +26,7 @@ import Search from "./Search";
 import Podcasts from "./Podcasts";
 import Artists from "./Artists";
 import Albums from "./Albums";
+import { useSelector } from "react-redux";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -93,6 +94,14 @@ const Homepage = () => {
 
   let accessToken = localStorage.getItem("token");
 
+  const [playing, setPlaying] = useState();
+
+  const chooseTrack = (track) => {
+    setPlaying(track);
+  };
+
+  const isPlaying = useSelector((state) => state.music.isPlaying);
+  const Details = useSelector((state) => state.details.Playlist);
   return (
     <div className={classes.homeWrapper}>
       <Router>
@@ -120,7 +129,7 @@ const Homepage = () => {
                     <Library />
                   </Route>
                   <Route path={ONEPLAYLIST}>
-                    <PlaylistDetails />
+                    <PlaylistDetails chooseTrack={chooseTrack} />
                   </Route>
                   <Route path={SEARCH}>
                     <Search />
@@ -144,8 +153,9 @@ const Homepage = () => {
           </Grid>
         </Grid>
       </Router>
+
       <div className={classes.footerControls}>
-        <ControlsWrapper accessToken={accessToken} />
+        <ControlsWrapper accessToken={accessToken} trackuri={Details?.uri} />
       </div>
     </div>
   );

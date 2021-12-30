@@ -1,8 +1,14 @@
+import { TOPTRACKS } from "../ApiUrl";
+
 const initialState = {
   Playlists: [],
   User: null,
-  TrackId: null,
+  Toptracks: [],
   isPlaying: false,
+  trackId: null,
+  Newreleases: null,
+  Featuredplaylists: null,
+  Recentlyplayed: [],
 };
 
 const Reducer = (state = initialState, action) => {
@@ -17,8 +23,27 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Playlists: action.payload.Playlists,
       };
-
-    case "ISPLAYING":
+    case "FETCH_NEWRELEASES":
+      return {
+        ...state,
+        Newreleases: action.payload.Newreleases,
+      };
+    case "FETCH_FEATUREDPLAYLISTS":
+      return {
+        ...state,
+        Featuredplaylists: action.payload.Featuredplaylists,
+      };
+    case "FETCH_RECENTLYPLAYED":
+      return {
+        ...state,
+        Recentlyplayed: action.payload.Recentlyplayed,
+      };
+    case "TOPTRACKS":
+      return {
+        ...state,
+        Toptracks: action.payload.Toptracks,
+      };
+    case "PLAYSONG":
       return {
         ...state,
         isPlaying: true,
@@ -26,7 +51,7 @@ const Reducer = (state = initialState, action) => {
     case "TRACKID":
       return {
         ...state,
-        TrackId: action.payload.TrackId,
+        trackId: state.trackId,
       };
     default:
       return state;

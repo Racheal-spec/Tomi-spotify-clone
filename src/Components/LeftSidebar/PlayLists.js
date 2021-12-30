@@ -24,7 +24,6 @@ const PlayLists = () => {
   }, [dispatch]);
 
   const Playlists = useSelector((state) => state.music.Playlists);
-  console.log(Playlists);
 
   return (
     <div className={classes.root}>

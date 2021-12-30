@@ -7,14 +7,15 @@ import { themes } from "./Helpers/Theme";
 import Login from "./Pages/Login";
 import { useEffect, useState } from "react";
 import { getBearerToken } from "./SpotifyENV";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./Actions/Actions";
-import axios from "axios";
 
 function App() {
   const [bearerToken, setBearerToken] = useState(null);
 
   const dispatch = useDispatch();
+
+  const Details = useSelector((state) => state.details.Playlist);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -33,7 +34,7 @@ function App() {
       }
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={themes}>
