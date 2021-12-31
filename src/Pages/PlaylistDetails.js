@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { fetchDetails } from "../Actions/Actions";
+import { bgColors, fetchDetails } from "../Actions/Actions";
 import SongList from "../Components/SongList";
 import { themes } from "../Helpers/Theme";
 import { Avatar } from "@mui/material";
@@ -16,15 +16,18 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 
 const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
+  let setColor = Math.floor(Math.random() * 16777215).toString(16);
+  let bg = "#" + `${setColor}`;
+
   const DetailsStyles = makeStyles((theme) => ({
     root: {
-      background: `linear-gradient(to bottom,${themes.palette.primary.grey2}, ${themes.palette.primary.grey1} )`,
+      background: `linear-gradient(to bottom, ${bg}, ${themes.palette.primary.black})`,
       color: themes.palette.primary.white,
-      padding: "10px 30px",
-      height: "38%",
+      padding: "80px 30px",
+      height: "52%",
     },
     extraDivWrapper: {
-      background: `linear-gradient(${themes.palette.primary.grey5},${themes.palette.primary.grey4})`,
+      background: themes.palette.primary.dark,
       padding: "40px 30px",
       display: "flex",
       alignItems: "center",

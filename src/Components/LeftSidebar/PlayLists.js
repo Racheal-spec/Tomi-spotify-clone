@@ -13,7 +13,7 @@ const PlayLists = () => {
       width: "100vh",
     },
     linkDiv: {
-      margin: "10px 0",
+      margin: "13px 0",
     },
   }));
   const classes = playlistStyles();

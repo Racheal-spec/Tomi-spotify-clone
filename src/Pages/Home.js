@@ -14,13 +14,17 @@ import {
   fetchTopTracks,
 } from "../Actions/Actions";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  let setColor = Math.floor(Math.random() * 16777215).toString(16);
+  let bg = "#" + `${setColor}`;
+
   const homeStyles = makeStyles((theme) => ({
     homeWrapper: {
-      background: "linear-gradient(to bottom, #000137, #000000 )",
-      height: "100%",
-      padding: "10px 30px",
+      background: `linear-gradient(to bottom, ${bg}, #000000 80%)`,
+      height: "55%",
+      padding: "80px 30px",
     },
     CardContainer: {
       padding: "20px 0",

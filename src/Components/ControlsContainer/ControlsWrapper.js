@@ -83,7 +83,7 @@ const ControlsWrapper = ({ trackuri }) => {
             bgColor: themes.palette.primary.grey4,
             activeColor: themes.palette.primary.white,
             trackNameColor: themes.palette.primary.white,
-            trackArtistColor: themes.palette.primary.grey2,
+            trackArtistColor: themes.palette.primary.grey3,
             padding: "0 50px",
             color: "#fff",
             position: "fixed",

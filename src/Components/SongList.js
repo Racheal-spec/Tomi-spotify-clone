@@ -67,57 +67,59 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   const duration = convertMS(track.duration_ms);
 
   return (
-    <div
-      key={track.id}
-      className={classes.root}
-      onMouseEnter={(e) => {
-        setMouseHover({
-          opacity: 1,
-        });
-        setChangeHover(PlayArrow);
-      }}
-      onMouseLeave={(e) => {
-        setMouseHover({
-          opacity: 0,
-        });
-        setChangeHover();
-      }}
-    >
-      <div style={{ fontSize: "20px" }} onClick={handleClick}>
-        {changehover ? (
-          <div onClick={handleClick}>
-            {click ? <PauseIcon /> : <PlayArrow />}
+    <>
+      <div
+        key={track.id}
+        className={classes.root}
+        onMouseEnter={(e) => {
+          setMouseHover({
+            opacity: 1,
+          });
+          setChangeHover(PlayArrow);
+        }}
+        onMouseLeave={(e) => {
+          setMouseHover({
+            opacity: 0,
+          });
+          setChangeHover();
+        }}
+      >
+        <div style={{ fontSize: "20px" }} onClick={handleClick}>
+          {changehover ? (
+            <div onClick={handleClick}>
+              {click ? <PauseIcon /> : <PlayArrow />}
+            </div>
+          ) : (
+            list + 1
+          )}
+        </div>
+        <div className={classes.imgtextDiv}>
+          <div>
+            <img
+              src={track.album.images[0].url}
+              className={classes.songimg}
+              alt="songimg"
+            />
           </div>
-        ) : (
-          list + 1
-        )}
-      </div>
-      <div className={classes.imgtextDiv}>
-        <div>
-          <img
-            src={track.album.images[0].url}
-            className={classes.songimg}
-            alt="songimg"
-          />
+          <div className={classes.trackname}>
+            <Typography className={classes.songname}>{track.name}</Typography>
+            <Typography variant="smallerText">
+              {track.album.artists[0].name}
+            </Typography>
+          </div>
         </div>
-        <div className={classes.trackname}>
-          <Typography className={classes.songname}>{track.name}</Typography>
-          <Typography variant="smallerText">
-            {track.album.artists[0].name}
-          </Typography>
-        </div>
-      </div>
 
-      <div>
-        <Typography variant="smallerText">{track.album.name}</Typography>
+        <div>
+          <Typography variant="smallerText">{track.album.name}</Typography>
+        </div>
+        <div style={mousehover}>
+          <FavoriteBorderIcon fontSize="small" />
+        </div>
+        <div>
+          {duration.minute}: {duration.seconds}
+        </div>
       </div>
-      <div style={mousehover}>
-        <FavoriteBorderIcon fontSize="small" />
-      </div>
-      <div>
-        {duration.minute}: {duration.seconds}
-      </div>
-    </div>
+    </>
   );
 };
 

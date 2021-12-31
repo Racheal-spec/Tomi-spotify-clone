@@ -106,3 +106,5 @@ export const fetchRecentlyPlayed = () => async (dispatch) => {
     },
   });
 };
+
+export const bgColors = ["rgb(216, 24, 40)", "ffffff", "808080"];

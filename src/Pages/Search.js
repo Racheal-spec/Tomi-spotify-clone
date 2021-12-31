@@ -10,7 +10,7 @@ import SearchCard from "../Components/SearchCard";
 const Search = () => {
   const searchStyles = makeStyles((theme) => ({
     root: {
-      padding: "20px 30px",
+      padding: "60px 30px",
     },
     titleDiv: {
       display: "flex",

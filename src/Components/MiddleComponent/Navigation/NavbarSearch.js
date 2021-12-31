@@ -15,7 +15,11 @@ const NavbarSearch = ({ children }) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingTop: 2,
+      backgroundColor: themes.palette.primary.grey4,
+      padding: 8,
+      position: "fixed",
+      width: "60%",
+      zIndex: 2,
     },
     profile: {
       display: "flex",
