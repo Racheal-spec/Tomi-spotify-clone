@@ -40,30 +40,12 @@ const Search = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.titleDiv}>
-        <div className={classes.title}>
-          <Typography variant="h5">Recent Searches</Typography>
-        </div>
-        <div>
-          <Link to={SEARCH} className={classes.seeAll}>
-            SEE ALL
-          </Link>
-        </div>
-      </div>
-
-      <Grid container spacing={2} className={classes.CardContainer}>
-        {[0, 1, 2].map((item) => (
-          <Grid item xl={4} lg={4} md={6} xs={12} key={item.id}>
-            <MusicCard />
-          </Grid>
-        ))}
-      </Grid>
       <section className={classes.section}>
         <div className={classes.title}>
           <Typography variant="h5">Browse all</Typography>
         </div>
         <Grid container spacing={2} className={classes.CardContainer}>
-          {[0, 1, 2, 3, 4, 5].map((item) => (
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <Grid item xl={4} lg={4} md={6} xs={12}>
               <SearchCard />
             </Grid>

@@ -4,11 +4,14 @@ import { makeStyles } from "@mui/styles";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
+import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
 import { PLAYLIST, SEARCH } from "../../Helpers/Routes";
 import { FavoriteRounded } from "@mui/icons-material";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import classNames from "classnames";
 
 const LeftSidebar = () => {
   const controlStyles = makeStyles((theme) => ({
@@ -41,18 +44,21 @@ const LeftSidebar = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
-      padding: "5px 0",
-      "&:focus": {
-        backgroundColor: themes.palette.primary.grey1,
-        color: themes.palette.primary.white,
-        cursor: "pointer",
-        padding: "6px 5px",
-        margin: "0 20px",
-      },
+      padding: "8px 0",
+      margin: "0 5px",
+    },
+    activeLink: {
+      //backgroundColor: themes.palette.primary.grey1,
+      color: themes.palette.primary.white,
+      cursor: "pointer",
+      //padding: "8px 0",
+      //borderRadius: 5,
+      //margin: "0 5px",
     },
     navlink: {
       color: themes.palette.primary.grey3,
       textDecoration: "none",
+      "&:active": {},
     },
     spacing: {
       padding: "0 30px",
@@ -74,6 +80,7 @@ const LeftSidebar = () => {
       },
     },
   }));
+
   const classes = controlStyles();
 
   return (
@@ -99,7 +106,7 @@ const LeftSidebar = () => {
       </Link>
       <Link to={PLAYLIST} className={classes.navlink}>
         <div className={classes.iconDiv}>
-          <HomeOutlinedIcon className={classes.icon} />
+          <LibraryMusicIcon className={classes.icon} />
           <Typography variant="smallText" fontWeight="bold">
             Library
           </Typography>

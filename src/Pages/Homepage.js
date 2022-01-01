@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
-
 import RightSidebar from "../Components/RightSidebar/RightSidebar";
 import ControlsWrapper from "../Components/ControlsContainer/ControlsWrapper";
 import { themes } from "../Helpers/Theme";
@@ -17,7 +16,7 @@ import {
   SEARCH,
 } from "../Helpers/Routes";
 import Home from "../Pages/Home";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 import PlayLists from "../Components/LeftSidebar/PlayLists";
 import PlaylistDetails from "./PlaylistDetails";
 import LeftSidebar from "../Components/LeftSidebar/LeftSidebar";
@@ -27,6 +26,7 @@ import Podcasts from "./Podcasts";
 import Artists from "./Artists";
 import Albums from "./Albums";
 import { useSelector } from "react-redux";
+import MobileNav from "../Components/MobileNav";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -74,7 +74,10 @@ const Homepage = () => {
         display: "none",
       },
     },
-    footerControls: {},
+    footerControls: {
+      position: "fixed",
+      bottom: "30%",
+    },
     listScroll: {
       "&::-webkit-scrollbar": {
         width: "0.4em",
@@ -87,6 +90,13 @@ const Homepage = () => {
       border: "0.5px solid #212121",
       width: "80%",
       margin: "0 auto",
+    },
+    mobileNav: {
+      background: themes.palette.primary.grey2,
+      width: "100%",
+      height: "8%",
+      position: "fixed",
+      bottom: 0,
     },
   }));
 
@@ -102,61 +112,61 @@ const Homepage = () => {
 
   const isPlaying = useSelector((state) => state.music.isPlaying);
   const Details = useSelector((state) => state.details.Playlist);
+
+  const matches = useMediaQuery(themes.breakpoints.down("sm"));
+
   return (
     <div className={classes.homeWrapper}>
-      <Router>
-        <Grid container className={classes.gridWrapper}>
-          <Grid item className={classes.grid1}>
-            <Grid container>
-              <Grid item lg={12}>
-                <LeftSidebar />
-              </Grid>
-              <hr className={classes.hrstyles} />
-              <Grid item lg={12} className={classes.listScroll}>
-                <PlayLists />
-              </Grid>
+      <Grid container className={classes.gridWrapper}>
+        <Grid item className={classes.grid1}>
+          <Grid container>
+            <Grid item lg={12}>
+              <LeftSidebar />
+            </Grid>
+            <hr className={classes.hrstyles} />
+            <Grid item lg={12} className={classes.listScroll}>
+              <PlayLists />
             </Grid>
           </Grid>
-
-          <Grid item className={classes.grid2}>
-            <div className={classes.root}>
-              <DefaultNav>
-                <Switch>
-                  <Route exact path={HOMEPAGE}>
-                    <Home />
-                  </Route>
-                  <Route path={PLAYLIST}>
-                    <Library />
-                  </Route>
-                  <Route path={ONEPLAYLIST}>
-                    <PlaylistDetails chooseTrack={chooseTrack} />
-                  </Route>
-                  <Route path={SEARCH}>
-                    <Search />
-                  </Route>
-                  <Route path={PODCAST}>
-                    <Podcasts />
-                  </Route>
-                  <Route path={ARTIST}>
-                    <Artists />
-                  </Route>
-                  <Route path={ALBUM}>
-                    <Albums />
-                  </Route>
-                </Switch>
-              </DefaultNav>
-            </div>
-          </Grid>
-
-          <Grid item className={classes.grid3}>
-            <RightSidebar />
-          </Grid>
         </Grid>
-      </Router>
+
+        <Grid item className={classes.grid2}>
+          <div className={classes.root}>
+            <DefaultNav>
+              <Route exact path={HOMEPAGE}>
+                <Home />
+              </Route>
+              <Route path={PLAYLIST}>
+                <Library />
+              </Route>
+              <Route path={ONEPLAYLIST}>
+                <PlaylistDetails chooseTrack={chooseTrack} />
+              </Route>
+              <Route path={SEARCH}>
+                <Search />
+              </Route>
+              <Route path={PODCAST}>
+                <Podcasts />
+              </Route>
+              <Route path={ARTIST}>
+                <Artists />
+              </Route>
+              <Route path={ALBUM}>
+                <Albums />
+              </Route>
+            </DefaultNav>
+          </div>
+        </Grid>
+
+        <Grid item className={classes.grid3}>
+          <RightSidebar />
+        </Grid>
+      </Grid>
 
       <div className={classes.footerControls}>
         <ControlsWrapper accessToken={accessToken} trackuri={Details?.uri} />
       </div>
+      {matches ? <MobileNav /> : ""}
     </div>
   );
 };

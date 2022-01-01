@@ -20,6 +20,9 @@ const NavbarSearch = ({ children }) => {
       position: "fixed",
       width: "60%",
       zIndex: 2,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
     profile: {
       display: "flex",
@@ -29,6 +32,9 @@ const NavbarSearch = ({ children }) => {
       borderRadius: 30,
       cursor: "pointer",
       padding: "4px 0",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     arrow: {
       width: 45,
@@ -41,8 +47,10 @@ const NavbarSearch = ({ children }) => {
     },
     search: {
       marginRight: 160,
+      [theme.breakpoints.down("sm")]: {
+        marginRight: 0,
+      },
     },
-
     searchStyles: {
       width: "350px",
       height: "40px",
@@ -51,6 +59,9 @@ const NavbarSearch = ({ children }) => {
       padding: "6px 30px",
       border: 0,
       borderRadius: "30px !important",
+      [theme.breakpoints.down("sm")]: {
+        width: "250px",
+      },
     },
     margin: {
       margin: "0 6px",

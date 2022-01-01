@@ -15,6 +15,9 @@ const ControlsWrapper = ({ trackuri }) => {
       position: "fixed",
       bottom: 0,
       width: "100%",
+      [theme.breakpoints.down("sm")]: {
+        bottom: "8%",
+      },
     },
 
     slider: {
@@ -86,9 +89,6 @@ const ControlsWrapper = ({ trackuri }) => {
             trackArtistColor: themes.palette.primary.grey3,
             padding: "0 50px",
             color: "#fff",
-            position: "fixed",
-            bottom: 0,
-            zIndex: 999,
           }}
         />
       </div>

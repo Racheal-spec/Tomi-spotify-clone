@@ -25,6 +25,9 @@ const Navbar = ({ children }) => {
       position: "fixed",
       width: "60%",
       zIndex: 2,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
     barWrapper: {
       display: "flex",
