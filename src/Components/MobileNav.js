@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
-import { HOMEPAGE, SEARCH } from "../Helpers/Routes";
+import { HOMEPAGE, PLAYLIST, SEARCH } from "../Helpers/Routes";
 
 const MobileNav = () => {
   const mobileStyles = makeStyles((theme) => ({
@@ -55,7 +55,7 @@ const MobileNav = () => {
           <div className={classes.iconName}>Search</div>
         </div>
       </Link>
-      <Link to="/" className={classes.navlink}>
+      <Link to={PLAYLIST} className={classes.navlink}>
         <div className={classes.iconDiv}>
           <LibraryMusicIcon className={classes.icon} />
           <div className={classes.iconName}>Library</div>

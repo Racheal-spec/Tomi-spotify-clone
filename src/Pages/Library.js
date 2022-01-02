@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../Helpers/Theme";
 import axios from "axios";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
 import { Grid, listItemAvatarClasses } from "@mui/material";
 import MusicCard from "../Components/MusicCard";
@@ -35,7 +35,7 @@ const Library = () => {
   const classes = playlistStyles();
 
   const Playlists = useSelector((state) => state.music.Playlists);
-  console.log(Playlists);
+  const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (
     <div className={classes.root}>
@@ -45,9 +45,9 @@ const Library = () => {
         </Typography>
       </div>
       <div>
-        <Grid container spacing={2}>
+        <Grid container spacing={matches ? 0 : 2}>
           {Playlists.map((list) => (
-            <Grid item xl={4} lg={4} xs={12} key={list.id}>
+            <Grid item xl={4} lg={4} xs={6} key={list.id}>
               <MusicCard
                 id={list.id}
                 images={list.images[0].url}

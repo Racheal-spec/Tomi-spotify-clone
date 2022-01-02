@@ -26,6 +26,9 @@ const LibraryNav = ({ children }) => {
       borderRadius: 30,
       cursor: "pointer",
       padding: "4px 0",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     arrow: {
       width: 45,
@@ -38,7 +41,6 @@ const LibraryNav = ({ children }) => {
     },
     libNav: {
       fontWeight: "bold",
-      //marginLeft: 200,
     },
     upgradeLink: {
       color: themes.palette.primary.offwhite,
@@ -55,6 +57,10 @@ const LibraryNav = ({ children }) => {
       color: themes.palette.primary.white,
       textDecoration: "none",
       margin: "0 15px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 12,
+        margin: "0 10px",
+      },
     },
     navlink: {
       listStyle: "none",

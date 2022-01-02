@@ -85,10 +85,16 @@ const Home = () => {
   console.log(Toptracks);
   console.log(Recentlyplayed);
 
+  const hour = new Date().getHours();
+
   return (
     <div className={classes.homeWrapper}>
       <Typography variant="h4" className={classes.spaceY}>
-        Good afternoon
+        {hour < 12
+          ? "Good morning"
+          : hour < 18
+          ? "Good afternoon"
+          : "Good evening"}
       </Typography>
       <Grid container spacing={1} className={classes.CardContainer}>
         {Playlists.slice(0, 4).map((item) => (
@@ -104,30 +110,6 @@ const Home = () => {
 
       <div className={classes.titleDiv}>
         <div className={classes.title}>
-          <Typography variant="h5">New Releases</Typography>
-        </div>
-        <div>
-          <Link to={HOMEPAGE} className={classes.seeAll}>
-            SEE ALL
-          </Link>
-        </div>
-      </div>
-      <Grid container spacing={2}>
-        {Newreleases?.albums.items &&
-          Newreleases?.albums.items.slice(0, 3).map((item) => (
-            <Grid item xl={4} lg={4} xs={12} className={classes.cardGrid}>
-              <MusicCard
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                images={item.images[0].url}
-              />
-            </Grid>
-          ))}
-      </Grid>
-
-      <div className={classes.titleDiv}>
-        <div className={classes.title}>
           <Typography variant="h5">{Featuredplaylists?.message}</Typography>
         </div>
         <div>
@@ -138,8 +120,8 @@ const Home = () => {
       </div>
       <Grid container spacing={2}>
         {Featuredplaylists?.playlists.items &&
-          Featuredplaylists?.playlists.items.slice(0, 5).map((item) => (
-            <Grid item xl={4} lg={4} xs={12}>
+          Featuredplaylists?.playlists.items.slice(0, 6).map((item) => (
+            <Grid item xl={4} lg={4} xs={6}>
               <MusicCard
                 id={item.id}
                 key={item.id}
@@ -153,7 +135,7 @@ const Home = () => {
 
       <div className={classes.titleDiv}>
         <div className={classes.title}>
-          <Typography variant="h5">Recently Played</Typography>
+          <Typography variant="h5">New Releases</Typography>
         </div>
         <div>
           <Link to={HOMEPAGE} className={classes.seeAll}>
@@ -162,40 +144,14 @@ const Home = () => {
         </div>
       </div>
       <Grid container spacing={2}>
-        {Recentlyplayed &&
-          Recentlyplayed?.map((item) => (
-            <Grid item xl={4} lg={4} xs={12}>
+        {Newreleases?.albums.items &&
+          Newreleases?.albums.items.slice(0, 4).map((item) => (
+            <Grid item xl={4} lg={4} xs={6} className={classes.cardGrid}>
               <MusicCard
                 id={item.id}
                 key={item.id}
                 name={item.name}
                 images={item.images[0].url}
-                description={item.description}
-              />
-            </Grid>
-          ))}
-      </Grid>
-
-      <div className={classes.titleDiv}>
-        <div className={classes.title}>
-          <Typography variant="h5">Top Tracks</Typography>
-        </div>
-        <div>
-          <Link to={HOMEPAGE} className={classes.seeAll}>
-            SEE ALL
-          </Link>
-        </div>
-      </div>
-      <Grid container spacing={2}>
-        {Toptracks &&
-          Toptracks?.map((item) => (
-            <Grid item xl={4} lg={4} xs={12}>
-              <MusicCard
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                images={item.images[0].url}
-                description={item.description}
               />
             </Grid>
           ))}
