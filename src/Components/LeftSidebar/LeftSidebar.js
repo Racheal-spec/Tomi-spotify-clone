@@ -91,7 +91,7 @@ const LeftSidebar = () => {
       <Link to="/" className={classes.navlink}>
         <div className={classes.iconDiv}>
           <HomeOutlinedIcon className={classes.icon} />
-          <Typography variant="smallText" fontWeight="bold">
+          <Typography variant="smallerText" fontWeight="bold">
             Home
           </Typography>
         </div>
@@ -99,7 +99,7 @@ const LeftSidebar = () => {
       <Link to={SEARCH} className={classes.navlink}>
         <div className={classes.iconDiv}>
           <SearchOutlinedIcon className={classes.icon} />
-          <Typography variant="smallText" fontWeight="bold">
+          <Typography variant="smallerText" fontWeight="bold">
             Search
           </Typography>
         </div>
@@ -107,7 +107,7 @@ const LeftSidebar = () => {
       <Link to={PLAYLIST} className={classes.navlink}>
         <div className={classes.iconDiv}>
           <LibraryMusicIcon className={classes.icon} />
-          <Typography variant="smallText" fontWeight="bold">
+          <Typography variant="smallerText" fontWeight="bold">
             Library
           </Typography>
         </div>
@@ -115,13 +115,13 @@ const LeftSidebar = () => {
       <div className={classes.menuDiv2}>
         <div className={classes.iconDiv}>
           <AddBoxIcon className={classes.icon} />
-          <Typography variant="smallText" fontWeight="bold">
+          <Typography variant="smallerText" fontWeight="bold">
             Create Playlist
           </Typography>
         </div>
         <div className={classes.iconDiv}>
           <FavoriteRounded className={classes.likeicon} />
-          <Typography variant="smallText" fontWeight="bold">
+          <Typography variant="smallerText" fontWeight="bold">
             Liked Songs
           </Typography>
         </div>

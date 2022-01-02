@@ -6,6 +6,7 @@ import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
 import { connect, useSelector } from "react-redux";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   const songListStyles = makeStyles((theme) => ({
@@ -18,6 +19,9 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
         borderRadius: 3,
         backgroundColor: themes.palette.primary.grey1,
       },
+      [theme.breakpoints.down("sm")]: {
+        gridTemplateColumns: "100px 220px 100px",
+      },
     },
     songimg: {
       width: "100%",
@@ -26,12 +30,36 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
       display: "grid",
       gridTemplateColumns: "10% 100%",
       alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        gridTemplateColumns: "40% 200%",
+      },
     },
     trackname: {
       marginLeft: 20,
     },
     songname: {
       color: themes.palette.primary.white,
+    },
+    index: {
+      fontSize: "20px",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    duration: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    albumName: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    Favorite: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
   }));
   const classes = songListStyles();
@@ -66,6 +94,8 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
 
   const duration = convertMS(track.duration_ms);
 
+  const matches = useMediaQuery(themes.breakpoints.down("sm"));
+
   return (
     <>
       <div
@@ -84,7 +114,7 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
           setChangeHover();
         }}
       >
-        <div style={{ fontSize: "20px" }} onClick={handleClick}>
+        <div className={classes.index} onClick={handleClick}>
           {changehover ? (
             <div onClick={handleClick}>
               {click ? <PauseIcon /> : <PlayArrow />}
@@ -109,13 +139,13 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
           </div>
         </div>
 
-        <div>
+        <div className={classes.albumName}>
           <Typography variant="smallerText">{track.album.name}</Typography>
         </div>
-        <div style={mousehover}>
+        <div style={mousehover} className={classes.Favorite}>
           <FavoriteBorderIcon fontSize="small" />
         </div>
-        <div>
+        <div className={classes.duration}>
           {duration.minute}: {duration.seconds}
         </div>
       </div>

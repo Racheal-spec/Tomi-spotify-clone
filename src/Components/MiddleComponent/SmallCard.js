@@ -37,12 +37,20 @@ const SmallCard = ({ id, name, images }) => {
       alignItems: "center",
       justifyContent: "space-between",
       padding: "0 10px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 10,
+        width: "60%",
+      },
     },
     postalImg: {
       maxWidth: "25%",
       height: 80,
       objectFit: "cover",
       borderRadius: 3,
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: "75%",
+        height: 55,
+      },
     },
     icon: {
       width: 40,

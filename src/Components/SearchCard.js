@@ -19,6 +19,9 @@ const SearchCard = () => {
     },
     title: {
       color: themes.palette.primary.white,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 10,
+      },
     },
     img: {
       width: "40%",
@@ -29,6 +32,9 @@ const SearchCard = () => {
     },
     imgDiv: {
       padding: "140px 0 0 0",
+      [theme.breakpoints.down("sm")]: {
+        padding: "40px 0 0 0",
+      },
     },
   }));
   const classes = searchcard();

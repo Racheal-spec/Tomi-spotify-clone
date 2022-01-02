@@ -14,6 +14,7 @@ import DownloadForOfflineOutlinedIcon from "@mui/icons-material/DownloadForOffli
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -39,6 +40,13 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
       boxShadow:
         "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
     },
+    flexTextName: {
+      display: "flex",
+      alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
     flexText: {
       display: "flex",
       alignItems: "center",
@@ -48,6 +56,9 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
     },
     boldName: {
       padding: "30px 0",
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft: 30,
+      },
     },
     songList: {
       padding: "20px 30px",
@@ -57,6 +68,14 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
     },
     marginYtwo: {
       margin: "0 25px",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    marginYmore: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
     },
     icon: {
       width: 55,
@@ -75,6 +94,9 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
     ownerName: {
       fontWeight: 500,
       color: themes.palette.primary.grey3,
+    },
+    hide: {
+      display: "none",
     },
   }));
 
@@ -101,6 +123,7 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
   const User = useSelector((state) => state.music.User);
 
   const isPlaying = useSelector((state) => state.music.isPlaying);
+  const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (
     <>
@@ -117,11 +140,18 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
               />
             </Grid>
             <Grid item lg={8} className={classes.sideGrid}>
-              <Typography variant="smallerText">PLAYLIST</Typography>
-              <Typography variant="h2" className={classes.boldName}>
+              {matches ? (
+                ""
+              ) : (
+                <Typography variant="smallerText">PLAYLIST</Typography>
+              )}
+              <Typography
+                variant={matches ? "h4" : "h2"}
+                className={classes.boldName}
+              >
                 {Details?.name}
               </Typography>
-              <div className={classes.flexText}>
+              <div className={classes.flexTextName}>
                 <Avatar
                   src={User?.images[0].url}
                   style={{ width: "25px", height: "25px" }}
@@ -150,19 +180,23 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
             <div className={classes.marginYtwo}>
               <DownloadForOfflineOutlinedIcon fontSize="large" />
             </div>
-            <div>
+            <div className={classes.marginYmore}>
               <MoreHorizOutlinedIcon fontSize="large" />
             </div>
           </div>
 
-          <div className={classes.flexText}>
-            <strong className={classes.marginY}>Custom order</strong>
-            {click ? (
-              <ArrowDropDownOutlinedIcon />
-            ) : (
-              <ArrowDropUpOutlinedIcon />
-            )}
-          </div>
+          {matches ? (
+            ""
+          ) : (
+            <div className={classes.flexText}>
+              <strong className={classes.marginY}>Custom order</strong>
+              {click ? (
+                <ArrowDropDownOutlinedIcon />
+              ) : (
+                <ArrowDropUpOutlinedIcon />
+              )}
+            </div>
+          )}
         </Box>
         <Box className={classes.songList}>
           {Details?.tracks.items.map((item, index) => (

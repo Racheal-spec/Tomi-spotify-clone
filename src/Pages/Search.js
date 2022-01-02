@@ -11,6 +11,9 @@ const Search = () => {
   const searchStyles = makeStyles((theme) => ({
     root: {
       padding: "60px 30px",
+      [theme.breakpoints.down("sm")]: {
+        padding: "0px 14px",
+      },
     },
     titleDiv: {
       display: "flex",
@@ -46,7 +49,7 @@ const Search = () => {
         </div>
         <Grid container spacing={2} className={classes.CardContainer}>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Grid item xl={4} lg={4} md={6} xs={12}>
+            <Grid item xl={4} lg={4} md={6} xs={6}>
               <SearchCard />
             </Grid>
           ))}

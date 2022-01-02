@@ -25,6 +25,9 @@ const Home = () => {
       background: `linear-gradient(to bottom, ${bg}, #000000 80%)`,
       height: "55%",
       padding: "80px 30px",
+      [theme.breakpoints.down("sm")]: {
+        padding: "80px 13px",
+      },
     },
     CardContainer: {
       padding: "20px 0",
@@ -50,6 +53,9 @@ const Home = () => {
       "&:hover": {
         textDecoration: "underline",
       },
+    },
+    cardGrid: {
+      [theme.breakpoints.down("sm")]: {},
     },
   }));
 
@@ -84,9 +90,9 @@ const Home = () => {
       <Typography variant="h4" className={classes.spaceY}>
         Good afternoon
       </Typography>
-      <Grid container spacing={2} className={classes.CardContainer}>
+      <Grid container spacing={1} className={classes.CardContainer}>
         {Playlists.slice(0, 4).map((item) => (
-          <Grid item xl={6} lg={6} xs={12} key={item.id}>
+          <Grid item xl={6} lg={6} xs={6} key={item.id}>
             <SmallCard
               id={item.id}
               name={item.name}
@@ -109,7 +115,7 @@ const Home = () => {
       <Grid container spacing={2}>
         {Newreleases?.albums.items &&
           Newreleases?.albums.items.slice(0, 3).map((item) => (
-            <Grid item xl={4} lg={4} xs={12}>
+            <Grid item xl={4} lg={4} xs={12} className={classes.cardGrid}>
               <MusicCard
                 id={item.id}
                 key={item.id}
