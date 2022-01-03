@@ -1,21 +1,18 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { USER_URL } from "./ApiUrl";
 import Homepage from "./Pages/Homepage";
 import { themes } from "./Helpers/Theme";
 import Login from "./Pages/Login";
 import { useEffect, useState } from "react";
 import { getBearerToken } from "./SpotifyENV";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loadUser } from "./Actions/Actions";
 
 function App() {
   const [bearerToken, setBearerToken] = useState(null);
 
   const dispatch = useDispatch();
-
-  const Details = useSelector((state) => state.details.Playlist);
 
   useEffect(() => {
     if (window.location.hash) {
