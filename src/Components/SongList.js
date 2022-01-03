@@ -5,8 +5,6 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
-import { connect, useSelector } from "react-redux";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   const songListStyles = makeStyles((theme) => ({
@@ -68,9 +66,6 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   const [changehover, setChangeHover] = useState();
   const [click, setClick] = useState(false);
 
-  const trackId = useSelector((state) => state.music.trackId);
-  const isPlaying = useSelector((state) => state.music.isPlaying);
-
   const handleClick = (e) => {
     e.preventDefault();
 
@@ -93,8 +88,6 @@ const SongList = ({ track, list, trackuri, chooseTrack, id }) => {
   };
 
   const duration = convertMS(track.duration_ms);
-
-  const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (
     <>

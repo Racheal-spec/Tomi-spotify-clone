@@ -1,10 +1,9 @@
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import { themes } from "../Helpers/Theme";
-import { Link } from "react-router-dom";
+
 import { Grid, Typography } from "@mui/material";
-import { SEARCH } from "../Helpers/Routes";
-import MusicCard from "../Components/MusicCard";
+
 import SearchCard from "../Components/SearchCard";
 
 const Search = () => {

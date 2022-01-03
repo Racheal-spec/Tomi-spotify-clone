@@ -4,8 +4,6 @@ import {
   NEWRELEASES,
   PLAYLIST,
   PLAYLIST_URL,
-  RECENTLY_PLAYED,
-  TOPTRACKS,
   USER_URL,
 } from "../ApiUrl";
 
@@ -78,33 +76,3 @@ export const fetchFeaturedPlaylists = () => async (dispatch) => {
     },
   });
 };
-
-export const fetchToptracks = () => async (dispatch) => {
-  const getToptracks = await axios.get(TOPTRACKS, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-  dispatch({
-    type: "FETCH_RECENTLYPLAYED",
-    payload: {
-      Recentlyplayed: getToptracks.data,
-    },
-  });
-};
-
-export const fetchRecentlyPlayed = () => async (dispatch) => {
-  const getRecentlyPlayed = await axios.get(RECENTLY_PLAYED, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-  dispatch({
-    type: "FETCH_RECENTLYPLAYED",
-    payload: {
-      Recentlyplayed: getRecentlyPlayed.data,
-    },
-  });
-};
-
-export const bgColors = ["rgb(216, 24, 40)", "ffffff", "808080"];

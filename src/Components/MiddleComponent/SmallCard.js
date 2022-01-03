@@ -1,14 +1,13 @@
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { themes } from "../../Helpers/Theme";
-import girl3 from "../../Assets/girl3.jpg";
+
 import { PlayArrow } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { ONEPLAYLIST } from "../../Helpers/Routes";
+
 import PauseIcon from "@mui/icons-material/Pause";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchDetails } from "../../Actions/Actions";
-import { useParams } from "react-router";
 
 const SmallCard = ({ id, name, images }) => {
   const smallCardStyle = makeStyles((theme) => ({

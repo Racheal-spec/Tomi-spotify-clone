@@ -6,15 +6,9 @@ import SmallCard from "../Components/MiddleComponent/SmallCard";
 import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
-import Navbar from "../Components/MiddleComponent/Navigation/Navbar";
+
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchFeaturedPlaylists,
-  fetchNewReleases,
-  fetchTopTracks,
-} from "../Actions/Actions";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { fetchFeaturedPlaylists, fetchNewReleases } from "../Actions/Actions";
 
 const Home = () => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -63,13 +57,8 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const User = useSelector((state) => state.music.User);
+  const isloading = useSelector((state) => state.music.isLoading);
 
-  //const userCountry = User.country;
-
-  const id = useParams().playlist_id;
-
-  console.log(id);
   useEffect(() => {
     dispatch(fetchNewReleases());
     dispatch(fetchFeaturedPlaylists());
@@ -80,83 +69,93 @@ const Home = () => {
   const Featuredplaylists = useSelector(
     (state) => state.music.Featuredplaylists
   );
-  const Toptracks = useSelector((state) => state.music.Toptracks);
-  const Recentlyplayed = useSelector((state) => state.music.Recentlyplayed);
-  console.log(Toptracks);
-  console.log(Recentlyplayed);
 
   const hour = new Date().getHours();
 
   return (
-    <div className={classes.homeWrapper}>
-      <Typography variant="h4" className={classes.spaceY}>
-        {hour < 12
-          ? "Good morning"
-          : hour < 18
-          ? "Good afternoon"
-          : "Good evening"}
-      </Typography>
-      <Grid container spacing={1} className={classes.CardContainer}>
-        {Playlists.slice(0, 4).map((item) => (
-          <Grid item xl={6} lg={6} xs={6} key={item.id}>
-            <SmallCard
-              id={item.id}
-              name={item.name}
-              images={item.images[0].url}
-            />
+    <>
+      {isloading ? (
+        <div>loading</div>
+      ) : (
+        <div className={classes.homeWrapper}>
+          <Typography variant="h4" className={classes.spaceY}>
+            {hour < 12
+              ? "Good morning"
+              : hour < 18
+              ? "Good afternoon"
+              : "Good evening"}
+          </Typography>
+          <Grid container spacing={1} className={classes.CardContainer}>
+            {Playlists.slice(0, 4).map((item) => (
+              <Grid item xl={6} lg={6} xs={6} key={item.id}>
+                <SmallCard
+                  id={item.id}
+                  key={item.id}
+                  name={item.name}
+                  images={item.images[0].url}
+                />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
 
-      <div className={classes.titleDiv}>
-        <div className={classes.title}>
-          <Typography variant="h5">{Featuredplaylists?.message}</Typography>
-        </div>
-        <div>
-          <Link to={HOMEPAGE} className={classes.seeAll}>
-            SEE ALL
-          </Link>
-        </div>
-      </div>
-      <Grid container spacing={2}>
-        {Featuredplaylists?.playlists.items &&
-          Featuredplaylists?.playlists.items.slice(0, 6).map((item) => (
-            <Grid item xl={4} lg={4} xs={6}>
-              <MusicCard
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                images={item.images[0].url}
-                description={item.description}
-              />
-            </Grid>
-          ))}
-      </Grid>
+          <div className={classes.titleDiv}>
+            <div className={classes.title}>
+              <Typography variant="h5">{Featuredplaylists?.message}</Typography>
+            </div>
+            <div>
+              <Link to={HOMEPAGE} className={classes.seeAll}>
+                SEE ALL
+              </Link>
+            </div>
+          </div>
+          <Grid container spacing={2}>
+            {Featuredplaylists?.playlists.items &&
+              Featuredplaylists?.playlists.items.slice(0, 6).map((item) => (
+                <Grid item xl={4} lg={4} xs={6} key={item.id}>
+                  <MusicCard
+                    id={item.id}
+                    key={item.id}
+                    name={item.name}
+                    images={item.images[0].url}
+                    description={item.description}
+                  />
+                </Grid>
+              ))}
+          </Grid>
 
-      <div className={classes.titleDiv}>
-        <div className={classes.title}>
-          <Typography variant="h5">New Releases</Typography>
+          <div className={classes.titleDiv}>
+            <div className={classes.title}>
+              <Typography variant="h5">New Releases</Typography>
+            </div>
+            <div>
+              <Link to={HOMEPAGE} className={classes.seeAll}>
+                SEE ALL
+              </Link>
+            </div>
+          </div>
+          <Grid container spacing={2}>
+            {Newreleases?.albums.items &&
+              Newreleases?.albums.items.slice(0, 4).map((item) => (
+                <Grid
+                  item
+                  xl={4}
+                  lg={4}
+                  xs={6}
+                  key={item.id}
+                  className={classes.cardGrid}
+                >
+                  <MusicCard
+                    id={item.id}
+                    key={item.id}
+                    name={item.name}
+                    images={item.images[0].url}
+                  />
+                </Grid>
+              ))}
+          </Grid>
         </div>
-        <div>
-          <Link to={HOMEPAGE} className={classes.seeAll}>
-            SEE ALL
-          </Link>
-        </div>
-      </div>
-      <Grid container spacing={2}>
-        {Newreleases?.albums.items &&
-          Newreleases?.albums.items.slice(0, 4).map((item) => (
-            <Grid item xl={4} lg={4} xs={6} className={classes.cardGrid}>
-              <MusicCard
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                images={item.images[0].url}
-              />
-            </Grid>
-          ))}
-      </Grid>
-    </div>
+      )}
+    </>
   );
 };
 

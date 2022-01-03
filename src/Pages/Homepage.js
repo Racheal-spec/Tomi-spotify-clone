@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import RightSidebar from "../Components/RightSidebar/RightSidebar";
 import ControlsWrapper from "../Components/ControlsContainer/ControlsWrapper";
 import { themes } from "../Helpers/Theme";
 import Grid from "@mui/material/Grid";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Library from "../Pages/Library";
 import {
   ALBUM,
@@ -104,70 +104,76 @@ const Homepage = () => {
 
   let accessToken = localStorage.getItem("token");
 
-  const [playing, setPlaying] = useState();
-
-  const chooseTrack = (track) => {
-    setPlaying(track);
-  };
-
-  const isPlaying = useSelector((state) => state.music.isPlaying);
+  const [isloading, setIsloading] = useState(true);
+  useEffect(() => {
+    setIsloading(false);
+  }, [setIsloading]);
   const Details = useSelector((state) => state.details.Playlist);
 
   const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (
-    <div className={classes.homeWrapper}>
-      <Grid container className={classes.gridWrapper}>
-        <Grid item className={classes.grid1}>
-          <Grid container>
-            <Grid item lg={12}>
-              <LeftSidebar />
+    <>
+      {isloading ? (
+        <div>loading...</div>
+      ) : (
+        <div className={classes.homeWrapper}>
+          <Grid container className={classes.gridWrapper}>
+            <Grid item className={classes.grid1}>
+              <Grid container>
+                <Grid item lg={12}>
+                  <LeftSidebar />
+                </Grid>
+                <hr className={classes.hrstyles} />
+                <Grid item lg={12} className={classes.listScroll}>
+                  <PlayLists />
+                </Grid>
+              </Grid>
             </Grid>
-            <hr className={classes.hrstyles} />
-            <Grid item lg={12} className={classes.listScroll}>
-              <PlayLists />
+
+            <Grid item className={classes.grid2}>
+              <div className={classes.root}>
+                <DefaultNav>
+                  <Route exact path={HOMEPAGE}>
+                    <Home />
+                  </Route>
+                  <Route path={PLAYLIST}>
+                    <Library />
+                  </Route>
+                  <Route path={ONEPLAYLIST}>
+                    <PlaylistDetails />
+                  </Route>
+                  <Route path={SEARCH}>
+                    <Search />
+                  </Route>
+                  <Route path={PODCAST}>
+                    <Podcasts />
+                  </Route>
+                  <Route path={ARTIST}>
+                    <Artists />
+                  </Route>
+                  <Route path={ALBUM}>
+                    <Albums />
+                  </Route>
+                </DefaultNav>
+              </div>
+            </Grid>
+
+            <Grid item className={classes.grid3}>
+              <RightSidebar />
             </Grid>
           </Grid>
-        </Grid>
 
-        <Grid item className={classes.grid2}>
-          <div className={classes.root}>
-            <DefaultNav>
-              <Route exact path={HOMEPAGE}>
-                <Home />
-              </Route>
-              <Route path={PLAYLIST}>
-                <Library />
-              </Route>
-              <Route path={ONEPLAYLIST}>
-                <PlaylistDetails chooseTrack={chooseTrack} />
-              </Route>
-              <Route path={SEARCH}>
-                <Search />
-              </Route>
-              <Route path={PODCAST}>
-                <Podcasts />
-              </Route>
-              <Route path={ARTIST}>
-                <Artists />
-              </Route>
-              <Route path={ALBUM}>
-                <Albums />
-              </Route>
-            </DefaultNav>
+          <div className={classes.footerControls}>
+            <ControlsWrapper
+              accessToken={accessToken}
+              trackuri={Details?.uri}
+            />
           </div>
-        </Grid>
-
-        <Grid item className={classes.grid3}>
-          <RightSidebar />
-        </Grid>
-      </Grid>
-
-      <div className={classes.footerControls}>
-        <ControlsWrapper accessToken={accessToken} trackuri={Details?.uri} />
-      </div>
-      {matches ? <MobileNav /> : ""}
-    </div>
+          {matches ? <MobileNav /> : ""}
+        </div>
+      )}
+    </>
   );
 };
 

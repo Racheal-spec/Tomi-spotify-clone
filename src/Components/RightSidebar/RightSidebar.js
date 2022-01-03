@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../../Helpers/Theme";
-import MyButtons from "../../Helpers/Buttons";
 
 const RightSidebar = () => {
   const rightDiv = makeStyles((theme) => ({

@@ -8,10 +8,10 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
-import { PLAYLIST, SEARCH } from "../../Helpers/Routes";
+import { HOMEPAGE, PLAYLIST, SEARCH } from "../../Helpers/Routes";
 import { FavoriteRounded } from "@mui/icons-material";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classNames from "classnames";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const LeftSidebar = () => {
   const controlStyles = makeStyles((theme) => ({
@@ -48,12 +48,12 @@ const LeftSidebar = () => {
       margin: "0 5px",
     },
     activeLink: {
-      //backgroundColor: themes.palette.primary.grey1,
+      backgroundColor: themes.palette.primary.grey1,
       color: themes.palette.primary.white,
       cursor: "pointer",
-      //padding: "8px 0",
-      //borderRadius: 5,
-      //margin: "0 5px",
+      padding: "8px 0",
+      borderRadius: 5,
+      margin: "0 5px",
     },
     navlink: {
       color: themes.palette.primary.grey3,
@@ -83,13 +83,19 @@ const LeftSidebar = () => {
 
   const classes = controlStyles();
 
+  let history = useHistory();
+
   return (
     <div className={classes.root}>
       <div>
         <MoreHorizOutlinedIcon fontSize="large" className={classes.moreicon} />
       </div>
-      <Link to="/" className={classes.navlink}>
-        <div className={classes.iconDiv}>
+      <Link to={HOMEPAGE} className={classes.navlink}>
+        <div
+          className={classNames(classes.iconDiv, {
+            [classes.activeLink]: history.location.pathname === HOMEPAGE,
+          })}
+        >
           <HomeOutlinedIcon className={classes.icon} />
           <Typography variant="smallerText" fontWeight="bold">
             Home
@@ -97,7 +103,11 @@ const LeftSidebar = () => {
         </div>
       </Link>
       <Link to={SEARCH} className={classes.navlink}>
-        <div className={classes.iconDiv}>
+        <div
+          className={classNames(classes.iconDiv, {
+            [classes.activeLink]: history.location.pathname === SEARCH,
+          })}
+        >
           <SearchOutlinedIcon className={classes.icon} />
           <Typography variant="smallerText" fontWeight="bold">
             Search
@@ -105,7 +115,11 @@ const LeftSidebar = () => {
         </div>
       </Link>
       <Link to={PLAYLIST} className={classes.navlink}>
-        <div className={classes.iconDiv}>
+        <div
+          className={classNames(classes.iconDiv, {
+            [classes.activeLink]: history.location.pathname === PLAYLIST,
+          })}
+        >
           <LibraryMusicIcon className={classes.icon} />
           <Typography variant="smallerText" fontWeight="bold">
             Library

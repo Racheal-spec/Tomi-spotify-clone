@@ -9,6 +9,7 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 import { ALBUM, ARTIST, PLAYLIST, PODCAST } from "../../../Helpers/Routes";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import classNames from "classnames";
 
 const LibraryNav = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
@@ -66,6 +67,14 @@ const LibraryNav = ({ children }) => {
       listStyle: "none",
       display: "flex",
     },
+    activeLink: {
+      backgroundColor: themes.palette.primary.grey1,
+      color: themes.palette.primary.white,
+      cursor: "pointer",
+      padding: "10px 14px",
+      borderRadius: 5,
+      margin: "0 5px",
+    },
   }));
   const classes = navStyles();
 
@@ -95,22 +104,42 @@ const LibraryNav = ({ children }) => {
         <div className={classes.libNav}>
           <ul className={classes.navlink}>
             <li>
-              <Link to={PLAYLIST} className={classes.link}>
+              <Link
+                to={PLAYLIST}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: history.location.pathname === PLAYLIST,
+                })}
+              >
                 Playlists
               </Link>
             </li>
             <li>
-              <Link to={PODCAST} className={classes.link}>
+              <Link
+                to={PODCAST}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: history.location.pathname === PODCAST,
+                })}
+              >
                 Podcasts
               </Link>
             </li>
             <li>
-              <Link to={ARTIST} className={classes.link}>
+              <Link
+                to={ARTIST}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: history.location.pathname === ARTIST,
+                })}
+              >
                 Artists
               </Link>
             </li>
             <li>
-              <Link to={ALBUM} className={classes.link}>
+              <Link
+                to={ALBUM}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: history.location.pathname === ALBUM,
+                })}
+              >
                 Albums
               </Link>
             </li>

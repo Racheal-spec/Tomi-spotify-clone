@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../Helpers/Theme";
-import axios from "axios";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
-import { Grid, listItemAvatarClasses } from "@mui/material";
+import { Grid } from "@mui/material";
 import MusicCard from "../Components/MusicCard";
 
 const Library = () => {

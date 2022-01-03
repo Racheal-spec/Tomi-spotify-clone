@@ -11,9 +11,6 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Navbar = ({ children }) => {
-  let setColor = Math.floor(Math.random() * 16777215).toString(16);
-  let bg = "#" + `${setColor}`;
-
   const navStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
@@ -21,7 +18,7 @@ const Navbar = ({ children }) => {
       justifyContent: "space-between",
       padding: "0px 17px",
       background: "transparent",
-      //backgroundColor: themes.palette.primary.grey4,
+
       position: "fixed",
       width: "60%",
       zIndex: 2,
@@ -29,6 +26,7 @@ const Navbar = ({ children }) => {
         width: "100%",
       },
     },
+    changebg: {},
     barWrapper: {
       display: "flex",
       alignItems: "center",
@@ -72,6 +70,7 @@ const Navbar = ({ children }) => {
   const classes = navStyles();
 
   const [clickArrow, setClickArrow] = useState();
+
   const handleClick = () => {
     setClickArrow(!clickArrow);
   };

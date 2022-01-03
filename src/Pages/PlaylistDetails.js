@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { bgColors, fetchDetails } from "../Actions/Actions";
+import { fetchDetails } from "../Actions/Actions";
 import SongList from "../Components/SongList";
 import { themes } from "../Helpers/Theme";
 import { Avatar } from "@mui/material";
@@ -16,7 +16,7 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
+const PlaylistDetails = () => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
   let bg = "#" + `${setColor}`;
 
@@ -122,16 +122,15 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
 
   const User = useSelector((state) => state.music.User);
 
-  const isPlaying = useSelector((state) => state.music.isPlaying);
   const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (
     <>
       {load ? (
-        <Typography variant="h1">Loading...</Typography>
+        <Typography variant="h3">Loading...</Typography>
       ) : (
-        <div className={classes.root}>
-          <Grid container alignItems="center" key={Details?.id}>
+        <div className={classes.root} key={Details?.id}>
+          <Grid container alignItems="center">
             <Grid item lg={4}>
               <img
                 src={Details?.images[0].url}
@@ -200,13 +199,14 @@ const PlaylistDetails = ({ playlist_id, chooseTrack }) => {
         </Box>
         <Box className={classes.songList}>
           {Details?.tracks.items.map((item, index) => (
-            <SongList
-              key={item.id}
-              track={item.track}
-              list={index}
-              trackuri={item.track.uri}
-              chooseTrack={chooseTrack}
-            />
+            <div key={item.id}>
+              <SongList
+                key={item.id}
+                track={item.track}
+                list={index}
+                trackuri={item.track.uri}
+              />
+            </div>
           ))}
         </Box>
       </div>
