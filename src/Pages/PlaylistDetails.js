@@ -18,6 +18,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 const PlaylistDetails = () => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
+  // eslint-disable-next-line no-useless-concat
   let bg = "#" + `${setColor}`;
 
   const DetailsStyles = makeStyles((theme) => ({

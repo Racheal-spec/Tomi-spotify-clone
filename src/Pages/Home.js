@@ -6,12 +6,12 @@ import SmallCard from "../Components/MiddleComponent/SmallCard";
 import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFeaturedPlaylists, fetchNewReleases } from "../Actions/Actions";
 
 const Home = () => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
+  // eslint-disable-next-line no-useless-concat
   let bg = "#" + `${setColor}`;
 
   const homeStyles = makeStyles((theme) => ({
