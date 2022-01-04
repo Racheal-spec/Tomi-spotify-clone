@@ -44,5 +44,5 @@ $ npm start
 #### Demo
 
 <img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
-<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
-<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
+<img src="spotify-clone-app2.jpg" alt="spotify-clone-app">
+<img src="spotify-clone-app3.jpg" alt="spotify-clone-app">
