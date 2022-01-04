@@ -2,8 +2,7 @@ const AuthUrl = "https://accounts.spotify.com/authorize";
 
 const clientID = "fc56128a1d2e41e485c96c36ba2434ad";
 
-const redirectURI =
-  "https://tomi-spotify.vercel.app/ || http://localhost:3000/";
+const redirectURI = "https://tomi-spotify.vercel.app/";
 
 const scope = [
   "user-read-email",
