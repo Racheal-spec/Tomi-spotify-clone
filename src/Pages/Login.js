@@ -15,6 +15,9 @@ const Login = () => {
       justifyContent: "center",
       flexDirection: "column",
       height: "100%",
+      [themes.breakpoints.down("sm")]: {
+        height: "100vh",
+      },
     },
     img: {
       maxWidth: "12%",
