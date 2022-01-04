@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Spotify Clone Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a front-end clone of the spotify web player. The UI was modelled after the spotify desktop app using React Js, Spotify Web Api, Redux for state management and Material UI for styling.
+In this Spotify Clone application you can log in to the application with your spotify account, view your own playlist, select your preferred playlist and listen to your favorite music.
 
-## Available Scripts
+## Preview Link
 
-In the project directory, you can run:
+https://tomi-spotify.vercel.app/
 
-### `yarn start`
+## Authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project uses the spotify OAuth 2.0 service for authenticating the users. [Check for more information](https://developer.spotify.com/documentation/general/guides/authorization/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech/Framework Used
 
-### `yarn test`
+- React Js
+- Redux
+- Material UI
+- CSS
+- [Spotify Web Api](https://developer.spotify.com/documentation/web-api/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `yarn build`
+This project requires node and npm installed globally.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository to a directory of your choosing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+$ git clone https://github.com/Racheal-spec/Tomi-spotify-clone.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install the necessary packages
 
-### `yarn eject`
+```sh
+$ npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the server
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+$ npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Demo
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
+<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
+<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
