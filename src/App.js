@@ -5,7 +5,7 @@ import Homepage from "./Pages/Homepage";
 import { themes } from "./Helpers/Theme";
 import Login from "./Pages/Login";
 import { useEffect, useState } from "react";
-import { getBearerToken } from "./SpotifyENV";
+import { getBearerToken } from "./Auth";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./Actions/Actions";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import { themes } from "../Helpers/Theme";
-import { loginURL } from "../SpotifyENV";
+import { loginURL } from "../Auth";
 import spotifyicon from "../Assets/spotifyicon.png";
 import musicbrain from "../Assets/musicbrain.jpg";
 
