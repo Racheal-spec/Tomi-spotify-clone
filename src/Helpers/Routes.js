@@ -1,4 +1,4 @@
-export const HOMEPAGE = "/";
+export const HOMEPAGE = "/Tomi-spotify-clone";
 export const LOGINPAGE = "/login";
 export const PLAYLIST = "/library/playlist";
 export const ONEPLAYLIST = "/playlist/:playlist_id";
