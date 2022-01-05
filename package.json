@@ -2,7 +2,6 @@
   "name": "spotifyclone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://racheal-spec.github.io/Tomi-spotify-clone",
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -29,9 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
