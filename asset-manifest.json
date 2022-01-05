@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Tomi-spotify-clone/static/css/main.d496b854.chunk.css",
-    "main.js": "/Tomi-spotify-clone/static/js/main.4cbf4bfe.chunk.js",
-    "main.js.map": "/Tomi-spotify-clone/static/js/main.4cbf4bfe.chunk.js.map",
+    "main.js": "/Tomi-spotify-clone/static/js/main.0b9258d0.chunk.js",
+    "main.js.map": "/Tomi-spotify-clone/static/js/main.0b9258d0.chunk.js.map",
     "runtime-main.js": "/Tomi-spotify-clone/static/js/runtime-main.34180edd.js",
     "runtime-main.js.map": "/Tomi-spotify-clone/static/js/runtime-main.34180edd.js.map",
     "static/js/2.b9285759.chunk.js": "/Tomi-spotify-clone/static/js/2.b9285759.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.34180edd.js",
     "static/js/2.b9285759.chunk.js",
     "static/css/main.d496b854.chunk.css",
-    "static/js/main.4cbf4bfe.chunk.js"
+    "static/js/main.0b9258d0.chunk.js"
   ]
 }
