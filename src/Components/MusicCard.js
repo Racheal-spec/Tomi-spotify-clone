@@ -116,7 +116,7 @@ const MusicCard = ({ id, description, images, name }) => {
               {name}
             </Typography>
             <div>
-              <Typography variant="smallerText">By {description}</Typography>
+              <Typography variant="smallerText">{description}</Typography>
             </div>
           </CardContent>
         </Card>

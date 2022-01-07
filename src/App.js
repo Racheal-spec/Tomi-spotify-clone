@@ -7,7 +7,7 @@ import Login from "./Pages/Login";
 import { useEffect, useState } from "react";
 import { getBearerToken } from "./Auth";
 import { useDispatch } from "react-redux";
-import { loadUser } from "./Actions/Actions";
+import { LoadUser } from "./Actions/Actions";
 
 function App() {
   const [bearerToken, setBearerToken] = useState(null);
@@ -19,7 +19,6 @@ function App() {
       const { access_token, expires_in, token_type } = getBearerToken(
         window.location.hash
       );
-      window.location.hash = "";
       localStorage.clear();
 
       localStorage.setItem("token", access_token);
@@ -29,7 +28,7 @@ function App() {
       if (access_token) {
         setBearerToken(access_token);
       }
-      dispatch(loadUser());
+      dispatch(LoadUser());
     }
   }, [dispatch]);
 

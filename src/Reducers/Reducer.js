@@ -12,6 +12,7 @@ const Reducer = (state = initialState, action) => {
     case "FETCH_USER":
       return {
         ...state,
+        Token: action.payload.token,
         User: action.payload.User,
       };
     case "FETCH_PLAYLISTS":
@@ -19,6 +20,7 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Playlists: action.payload.Playlists,
       };
+
     case "FETCH_NEWRELEASES":
       return {
         ...state,

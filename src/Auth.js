@@ -2,7 +2,7 @@ const AuthUrl = "https://accounts.spotify.com/authorize";
 
 const clientID = "fc56128a1d2e41e485c96c36ba2434ad";
 
-const redirectURI = "https://tomi-spotify.vercel.app/";
+const redirectURI = "http://localhost:3000/";
 
 const scope = [
   "user-read-email",
@@ -22,10 +22,10 @@ export const getBearerToken = () => {
     .substring(1)
     .split("&")
     .reduce((initial, item) => {
-      //let parts = item.split("=");
-      //initial[parts[0]] = decodeURIComponent(parts[1]);
-      let [key, value] = item.split("=");
-      initial[key] = value;
+      let parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+      //let [key, value] = item.split("=");
+      //initial[key] = value;
       return initial;
     }, {});
 };

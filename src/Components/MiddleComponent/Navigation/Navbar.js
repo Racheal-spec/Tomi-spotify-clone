@@ -114,7 +114,7 @@ const Navbar = ({ children }) => {
               src={User?.images[0].url}
               style={{ width: "25px", height: "25px" }}
             />
-            <p className={classes.margin}>Tomisin</p>
+            <p className={classes.margin}>{User?.display_name}</p>
             {clickArrow ? (
               <ArrowDropDownOutlinedIcon />
             ) : (

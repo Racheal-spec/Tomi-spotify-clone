@@ -92,7 +92,7 @@ const Home = () => {
                   id={item.id}
                   key={item.id}
                   name={item.name}
-                  images={item.images[0].url}
+                  images={item.images[0]?.url}
                 />
               </Grid>
             ))}
@@ -116,7 +116,7 @@ const Home = () => {
                     id={item.id}
                     key={item.id}
                     name={item.name}
-                    images={item.images[0].url}
+                    images={item?.images[0].url}
                     description={item.description}
                   />
                 </Grid>
@@ -148,7 +148,7 @@ const Home = () => {
                     id={item.id}
                     key={item.id}
                     name={item.name}
-                    images={item.images[0].url}
+                    images={item?.images[0].url}
                   />
                 </Grid>
               ))}

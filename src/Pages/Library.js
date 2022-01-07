@@ -50,7 +50,7 @@ const Library = () => {
             <Grid item xl={4} lg={4} xs={6} key={list.id}>
               <MusicCard
                 id={list.id}
-                images={list.images[0].url}
+                images={list.images[0]?.url}
                 description={list.owner.display_name}
                 name={list.name}
               />
