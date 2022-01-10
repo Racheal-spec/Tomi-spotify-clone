@@ -1,10 +1,8 @@
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { themes } from "../../Helpers/Theme";
-
 import { PlayArrow } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
 import PauseIcon from "@mui/icons-material/Pause";
 import { useDispatch } from "react-redux";
 import { fetchDetails } from "../../Actions/Actions";

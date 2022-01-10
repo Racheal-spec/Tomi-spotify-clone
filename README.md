@@ -3,6 +3,10 @@
 This is a front-end clone of the spotify web player. The UI was modelled after the spotify desktop app using React Js, Spotify Web Api, Redux for state management and Material UI for styling.
 In this Spotify Clone application you can log in to the application with your spotify account, view your own playlist, select your preferred playlist and listen to your favorite music.
 
+As a requirement to use this application from spotify, it is important that your spotify email is added to the app dashboard as a user. To make that possible, please send me your spotify email on twitter-[@racheltomidev](https://twitter.com/racheltomidev) or send an email to [tomisinrachel@gmail.com](mailto:tomisinrachel@gmail.com).
+
+Thanks for understanding!
+
 ## Preview Link
 
 https://tomi-spotify.vercel.app/
