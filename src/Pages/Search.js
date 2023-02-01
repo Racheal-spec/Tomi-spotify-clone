@@ -1,10 +1,12 @@
 import { makeStyles } from "@mui/styles";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { themes } from "../Helpers/Theme";
 
 import { Grid, Typography } from "@mui/material";
 
 import SearchCard from "../Components/SearchCard";
+import { useDispatch, useSelector } from "react-redux";
+import { searchPlaylists } from "../Actions/Actions";
 
 const Search = () => {
   const searchStyles = makeStyles((theme) => ({
@@ -37,7 +39,7 @@ const Search = () => {
       padding: "30px 0",
     },
   }));
-
+  const Searchresult = useSelector((state) => state.music.Searchresult);
   const classes = searchStyles();
 
   return (

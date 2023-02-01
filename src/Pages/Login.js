@@ -5,6 +5,8 @@ import { themes } from "../Helpers/Theme";
 import { loginURL } from "../Auth";
 import spotifyicon from "../Assets/spotifyicon.png";
 import musicbrain from "../Assets/musicbrain.jpg";
+import { useSelector } from "react-redux";
+import LoadingAnimation from "../Components/Animation/LoadingAnimation";
 
 const Login = () => {
   const loginStyles = makeStyles({
@@ -86,6 +88,8 @@ const Login = () => {
 
   const classes = loginStyles();
 
+  const isloading = useSelector((state) => state.music.isLoading);
+
   return (
     <div className={classes.root}>
       <div className={classes.imgDiv}>
@@ -103,7 +107,7 @@ const Login = () => {
         </div>
         <div className={classes.loginBtn}>
           <a className={classes.link} href={loginURL}>
-            Login With Spotify
+            {isloading === true ? <LoadingAnimation /> : "Login With Spotify"}
           </a>
         </div>
       </div>

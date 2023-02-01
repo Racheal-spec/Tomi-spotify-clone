@@ -7,6 +7,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import MusicCard from "../Components/MusicCard";
+import { useDispatch } from "react-redux";
+import { fetchDetails } from "../Actions/Actions";
 
 const Library = () => {
   const playlistStyles = makeStyles((theme) => ({
@@ -37,6 +39,8 @@ const Library = () => {
   const Playlists = useSelector((state) => state.music.Playlists);
   const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
+  const dispatch = useDispatch();
+
   return (
     <div className={classes.root}>
       <div className={classes.list}>
@@ -50,6 +54,10 @@ const Library = () => {
             <Grid item xl={4} lg={4} xs={6} key={list.id}>
               <MusicCard
                 id={list.id}
+                handleDetails={() =>
+                  dispatch(fetchDetails({ playlist_id: list.id }))
+                }
+                cardlink={`/playlist/${list.id}`}
                 images={list.images[0]?.url}
                 description={list.owner.display_name}
                 name={list.name}

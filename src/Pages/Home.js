@@ -7,7 +7,11 @@ import { HOMEPAGE } from "../Helpers/Routes";
 import { Link } from "react-router-dom";
 import MusicCard from "../Components/MusicCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFeaturedPlaylists, fetchNewReleases } from "../Actions/Actions";
+import {
+  fetchFeaturedPlaylists,
+  fetchNewReleases,
+  loadAlbums,
+} from "../Actions/Actions";
 
 const Home = () => {
   let setColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -62,6 +66,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchNewReleases());
     dispatch(fetchFeaturedPlaylists());
+    dispatch(loadAlbums());
   }, [dispatch]);
 
   const Playlists = useSelector((state) => state.music.Playlists);
@@ -69,7 +74,6 @@ const Home = () => {
   const Featuredplaylists = useSelector(
     (state) => state.music.Featuredplaylists
   );
-
   const hour = new Date().getHours();
 
   return (

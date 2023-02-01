@@ -6,7 +6,7 @@ import { themes } from "../Helpers/Theme";
 import { PlayArrow } from "@mui/icons-material";
 import PauseIcon from "@mui/icons-material/Pause";
 
-const SongList = ({
+const AlbumSongList = ({
   track,
   list,
   albumtrack,
@@ -33,7 +33,7 @@ const SongList = ({
     },
     imgtextDiv: {
       display: "grid",
-      gridTemplateColumns: "10% 100%",
+      gridTemplateColumns: "50% 100%",
       alignItems: "center",
       [theme.breakpoints.down("sm")]: {
         gridTemplateColumns: "40% 200%",
@@ -124,23 +124,16 @@ const SongList = ({
           )}
         </div>
         <div className={classes.imgtextDiv}>
-          <div>
-            <img
-              src={track?.album.images?.[0]?.url}
-              className={classes.songimg}
-              alt="songimg"
-            />
-          </div>
           <div className={classes.trackname}>
             <Typography className={classes.songname}>{track.name}</Typography>
             <Typography variant="smallerText">
-              {track.album.artists[0].name}
+              {track.artists[0].name}
             </Typography>
           </div>
         </div>
 
         <div className={classes.albumName}>
-          <Typography variant="smallerText">{track.album.name}</Typography>
+          <Typography variant="smallerText">{track.name}</Typography>
         </div>
         <div style={mousehover} className={classes.Favorite}>
           <FavoriteBorderIcon fontSize="small" />
@@ -153,4 +146,4 @@ const SongList = ({
   );
 };
 
-export default SongList;
+export default AlbumSongList;

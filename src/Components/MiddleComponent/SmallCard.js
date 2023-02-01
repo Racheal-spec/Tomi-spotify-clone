@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import PauseIcon from "@mui/icons-material/Pause";
 import { useDispatch } from "react-redux";
 import { fetchDetails } from "../../Actions/Actions";
+import placeholder from "../../Assets/placeholder.png";
 
 const SmallCard = ({ id, name, images }) => {
   const smallCardStyle = makeStyles((theme) => ({
@@ -66,12 +67,12 @@ const SmallCard = ({ id, name, images }) => {
 
   const [mousehover, setMouseHover] = useState({ opacity: "0" });
   const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClick = (e) => {
     e.preventDefault();
     setClick(!click);
   };
-  const dispatch = useDispatch();
 
   const handleDetails = () => {
     dispatch(fetchDetails(id));
@@ -93,7 +94,11 @@ const SmallCard = ({ id, name, images }) => {
         }}
       >
         <div className={classes.cardWrapper}>
-          <img src={images} className={classes.postalImg} alt="postal" />
+          <img
+            src={images === undefined ? placeholder : images}
+            className={classes.postalImg}
+            alt="postal"
+          />
           <div className={classes.grid2}>
             <div>
               <strong>{name}</strong>

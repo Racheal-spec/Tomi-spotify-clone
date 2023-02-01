@@ -5,10 +5,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { themes } from "../Helpers/Theme";
 import PauseIcon from "@mui/icons-material/Pause";
-import { useDispatch } from "react-redux";
-import { fetchDetails } from "../Actions/Actions";
+import placeholder from "../Assets/placeholder.png";
 
-const MusicCard = ({ id, description, images, name }) => {
+const MusicCard = ({
+  id,
+  cardlink,
+  handleDetails,
+  description,
+  images,
+  name,
+}) => {
   const cardStyle = makeStyles((theme) => ({
     root: {
       padding: "15px 20px",
@@ -67,15 +73,9 @@ const MusicCard = ({ id, description, images, name }) => {
     setClick(!click);
   };
 
-  const dispatch = useDispatch();
-
-  const handleDetails = () => {
-    dispatch(fetchDetails(id));
-  };
-
   return (
     <Link
-      to={`/playlist/${id}`}
+      to={cardlink}
       onClick={handleDetails}
       className={classes.link}
       onMouseEnter={(e) => {
@@ -102,7 +102,11 @@ const MusicCard = ({ id, description, images, name }) => {
       >
         <Card className={classes.root} style={cardhover}>
           <CardMedia className={classes.media}>
-            <img src={images} className={classes.imgStyle} alt="playlist-img" />
+            <img
+              src={images === undefined ? placeholder : images}
+              className={classes.imgStyle}
+              alt="playlist-img"
+            />
             <div
               className={classes.icon}
               style={mousehover}

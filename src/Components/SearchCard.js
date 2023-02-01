@@ -38,6 +38,7 @@ const SearchCard = () => {
     },
   }));
   const classes = searchcard();
+
   return (
     <div className={classes.root}>
       <div className={classes.wrapper}>

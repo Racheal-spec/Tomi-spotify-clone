@@ -2,11 +2,12 @@ import { ArrowBackIos, ArrowForwardIos, Search } from "@mui/icons-material";
 import { Avatar, IconButton, InputAdornment, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { themes } from "../../../Helpers/Theme";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { searchPlaylists } from "../../../Actions/Actions";
+import { useHistory, useLocation } from "react-router-dom";
 
 const NavbarSearch = ({ children }) => {
   const navStyles = makeStyles((theme) => ({
@@ -70,13 +71,38 @@ const NavbarSearch = ({ children }) => {
   const classes = navStyles();
 
   const [clickArrow, setClickArrow] = useState();
+  const User = useSelector((state) => state.music.User);
+  const SearchResults = useSelector((state) => state.music.Searchedplaylists);
+
+  let history = useHistory();
+  let location = useLocation();
+
+  const [params, setParams] = useState("");
+
+  const dispatch = useDispatch();
+
+  const query = new URLSearchParams(location.search).get("query");
+
   const handleClick = () => {
     setClickArrow(!clickArrow);
   };
 
-  const User = useSelector((state) => state.music.User);
+  const handleSearchChange = (event) => {
+    setParams(event.target.value);
+  };
 
-  let history = useHistory();
+  // useEffect(() => {
+  //   console.log("heloooo");
+  //   dispatch(searchPlaylists(query));
+  // }, [dispatch, query]);
+
+  const handleSearchClick = () => {
+    history.push(`/search?query=${params}`);
+    dispatch(searchPlaylists(query));
+    console.log("dispatchinggg");
+  };
+
+  console.log(query, SearchResults);
 
   return (
     <>
@@ -98,15 +124,23 @@ const NavbarSearch = ({ children }) => {
             variant="outlined"
             placeholder="Artists, songs or podcasts"
             disableRipple
+            value={params}
+            onChange={handleSearchChange}
             InputProps={{
               className: classes.searchStyles,
               endAdornment: (
                 <InputAdornment>
-                  <IconButton edge="end">
+                  <IconButton onClick={handleSearchClick} edge="end">
                     <Search />
                   </IconButton>
                 </InputAdornment>
               ),
+            }}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                handleSearchClick();
+              }
             }}
           />
         </div>

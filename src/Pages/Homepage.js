@@ -10,6 +10,7 @@ import {
   ALBUM,
   ARTIST,
   HOMEPAGE,
+  ONEALBUM,
   ONEPLAYLIST,
   PLAYLIST,
   PODCAST,
@@ -27,6 +28,7 @@ import Artists from "./Artists";
 import Albums from "./Albums";
 import { useSelector } from "react-redux";
 import MobileNav from "../Components/MobileNav";
+import AlbumDetails from "./AlbumDetails";
 
 const Homepage = () => {
   const homeStyles = makeStyles((theme) => ({
@@ -154,6 +156,9 @@ const Homepage = () => {
                   </Route>
                   <Route path={ALBUM}>
                     <Albums />
+                  </Route>
+                  <Route path={ONEALBUM}>
+                    <AlbumDetails />
                   </Route>
                 </DefaultNav>
               </div>

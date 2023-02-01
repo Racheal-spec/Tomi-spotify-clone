@@ -4,7 +4,9 @@ const initialState = {
   Toptracks: [],
   isLoading: false,
   Newreleases: null,
+  Searchedplaylists: [],
   Featuredplaylists: null,
+  Albums: [],
 };
 
 const Reducer = (state = initialState, action) => {
@@ -31,11 +33,21 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Featuredplaylists: action.payload.Featuredplaylists,
       };
+    case "FETCH_SEARCHEDPLAYLISTS":
+      return {
+        ...state,
+        Searchedplaylists: action.payload.Searchedplaylists,
+      };
 
     case "ISLOADING":
       return {
         ...state,
         isLoading: true,
+      };
+    case "FETCH_ALBUMS":
+      return {
+        ...state,
+        Albums: action.payload.Albums,
       };
 
     default:
