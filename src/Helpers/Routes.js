@@ -7,3 +7,4 @@ export const PODCAST = "/library/podcast";
 export const ARTIST = "/library/artist";
 export const ALBUM = "/library/album";
 export const ONEALBUM = "/album/:album_id";
+export const CREATEPLAYLIST = "/create/playlist";

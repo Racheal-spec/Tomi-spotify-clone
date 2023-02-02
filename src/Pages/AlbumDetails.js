@@ -22,8 +22,6 @@ const AlbumDetails = () => {
 
   const User = useSelector((state) => state.music.User);
 
-  console.log(AlbumDetails);
-
   return (
     <div>
       {load ? (

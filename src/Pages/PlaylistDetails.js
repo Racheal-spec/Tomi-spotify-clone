@@ -35,6 +35,7 @@ const PlaylistDetails = () => {
           totaltracks={Details?.tracks.total}
           array={Details?.tracks.items}
           detailsid={Details?.id}
+          releasedate=""
         />
       )}
       <Box

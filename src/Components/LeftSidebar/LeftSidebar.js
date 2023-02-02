@@ -8,7 +8,12 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { themes } from "../../Helpers/Theme";
 import Typography from "@mui/material/Typography";
-import { HOMEPAGE, PLAYLIST, SEARCH } from "../../Helpers/Routes";
+import {
+  CREATEPLAYLIST,
+  HOMEPAGE,
+  PLAYLIST,
+  SEARCH,
+} from "../../Helpers/Routes";
 import { FavoriteRounded } from "@mui/icons-material";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -127,12 +132,14 @@ const LeftSidebar = () => {
         </div>
       </Link>
       <div className={classes.menuDiv2}>
-        <div className={classes.iconDiv}>
-          <AddBoxIcon className={classes.icon} />
-          <Typography variant="smallerText" fontWeight="bold">
-            Create Playlist
-          </Typography>
-        </div>
+        <Link to={CREATEPLAYLIST} className={classes.navlink}>
+          <div className={classes.iconDiv}>
+            <AddBoxIcon className={classes.icon} />
+            <Typography variant="smallerText" fontWeight="bold">
+              Create Playlist
+            </Typography>
+          </div>
+        </Link>
         <div className={classes.iconDiv}>
           <FavoriteRounded className={classes.likeicon} />
           <Typography variant="smallerText" fontWeight="bold">
