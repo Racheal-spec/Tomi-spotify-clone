@@ -1,5 +1,5 @@
-const { REACT_APP_AUTHURL, REACT_APP_CLIENT_ID, REACT_APP_REDIRECT_URI } =
-  process.env;
+// const { REACT_APP_AUTHURL, REACT_APP_CLIENT_ID, REACT_APP_REDIRECT_URI } =
+//   process.env;
 
 const scope = [
   "user-read-email",
@@ -27,6 +27,8 @@ export const getBearerToken = () => {
     }, {});
 };
 
-export const loginURL = `${REACT_APP_AUTHURL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&scope=${scope.join(
+export const loginURL = `${process.env.REACT_APP_AUTHURL}?client_id=${
+  process.env.REACT_APP_CLIENT_ID
+}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&scope=${scope.join(
   "%20"
 )}&response_type=token&show_dialog=true`;
