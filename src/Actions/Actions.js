@@ -16,22 +16,16 @@ export const LoadUser = () => async (dispatch) => {
     const { access_token } = getBearerToken(window.location.hash);
     localStorage.setItem("token", access_token);
 
-    const getUser = await axios
-      .get(USER_URL, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const getUser = await axios.get(USER_URL, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
     dispatch({
       type: "FETCH_USER",
       payload: {
         User: getUser.data,
+        error: getUser.response.data.message,
       },
     });
   }
