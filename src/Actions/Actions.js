@@ -7,7 +7,7 @@ import {
   PLAYLIST_URL,
   SEARCH_PLAYLISTS,
   SINGLEALBUM,
-  USER_URL,
+  USER_URLL,
 } from "../ApiUrl";
 import { getBearerToken } from "../Auth";
 
