@@ -30,7 +30,7 @@ const PlaylistDetails = () => {
           images={Details?.images?.[0]?.url}
           pagetitle="PLAYLIST"
           detailsname={Details?.name}
-          userimage={User?.images[0].url}
+          userimage={User?.images === [] ? "" : User?.images[0]?.url}
           songdisplayname={Details?.owner.display_name}
           totaltracks={Details?.tracks.total}
           array={Details?.tracks.items}

@@ -27,10 +27,12 @@ const AlbumDetails = () => {
         <Typography variant="h3">Loading...</Typography>
       ) : (
         <DetailsPage
-          images={AlbumDetails?.images?.[0]?.url}
+          images={
+            AlbumDetails?.images === [] ? "" : AlbumDetails?.images?.[0]?.url
+          }
           pagetitle="PLAYLIST"
           detailsname={AlbumDetails?.name}
-          userimage={User?.images[0].url}
+          userimage={User?.images === [] ? "" : User?.images[0]?.url}
           songdisplayname={AlbumDetails?.name}
           totaltracks={AlbumDetails?.tracks.total}
           array={AlbumDetails?.tracks.items}

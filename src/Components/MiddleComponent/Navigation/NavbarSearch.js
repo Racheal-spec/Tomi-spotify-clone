@@ -99,7 +99,7 @@ const NavbarSearch = ({ children }) => {
   const handleSearchClick = () => {
     history.push(`/search?query=${params}`);
     dispatch(searchPlaylists(query));
-    console.log("dispatchinggg");
+    // console.log("dispatchinggg");
   };
 
   console.log(query, SearchResults);
@@ -147,7 +147,7 @@ const NavbarSearch = ({ children }) => {
 
         <div className={classes.profile} onClick={handleClick}>
           <Avatar
-            src={User?.images[0].url}
+            src={User?.images === [] ? "" : User?.images[0]?.url}
             style={{ width: "25px", height: "25px" }}
           />
           <p className={classes.margin}>Tomisin</p>

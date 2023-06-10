@@ -58,7 +58,9 @@ const Albums = () => {
                     dispatch(fetchAlbumDetails({ album_id: list.album.id }))
                   }
                   cardlink={`/album/${list.album.id}`}
-                  images={list.album.images[0]?.url}
+                  images={
+                    list.album.images === [] ? "" : list.album.images[0]?.url
+                  }
                   description={list.album.artists[0].name}
                   name={list.album.name}
                 />
