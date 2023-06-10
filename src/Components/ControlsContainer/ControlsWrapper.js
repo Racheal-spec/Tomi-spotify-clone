@@ -26,6 +26,7 @@ const ControlsWrapper = ({ trackuri }) => {
           token={accessToken}
           showSaveIcon
           uris={trackuri ? [trackuri] : []}
+          callback={(error) => console.log(error)}
           styles={{
             height: 80,
             width: "100%",

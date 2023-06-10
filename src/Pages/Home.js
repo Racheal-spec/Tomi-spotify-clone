@@ -76,6 +76,8 @@ const Home = () => {
   );
   const hour = new Date().getHours();
 
+  console.log(Newreleases);
+
   return (
     <>
       {isloading ? (

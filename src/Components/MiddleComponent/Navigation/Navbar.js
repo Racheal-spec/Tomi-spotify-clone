@@ -76,7 +76,7 @@ const Navbar = ({ children }) => {
   };
 
   const User = useSelector((state) => state.music.User);
-  console.log(User);
+  // console.log(User);
   let history = useHistory();
 
   return (
