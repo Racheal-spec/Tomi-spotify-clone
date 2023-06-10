@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 import { fetchAlbumDetails } from "../Actions/Actions";
 import AlbumSongList from "../Components/AlbumSongList";
 import DetailsPage from "../Components/DetailsPage";
-import SongList from "../Components/SongList";
 
 const AlbumDetails = () => {
   const id = useParams().album_id;

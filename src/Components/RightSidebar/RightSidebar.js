@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../../Helpers/Theme";
-import { useHistory } from "react-router-dom";
 import { Box } from "@mui/material";
 import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 import RightPersonIcon from "./RightPersonIcon";
@@ -29,7 +28,6 @@ const RightSidebar = () => {
     },
   }));
   const classes = rightDiv();
-  let history = useHistory();
   const [showComp, setShowComp] = useState(false);
 
   const handleFacebookBtn = () => {
