@@ -13,6 +13,7 @@ const Login = () => {
     root: {
       backgroundColor: "#fff",
       height: "100%",
+      width: "100%",
       [themes.breakpoints.down("sm")]: {
         height: "100vh",
       },

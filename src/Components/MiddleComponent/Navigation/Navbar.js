@@ -76,7 +76,7 @@ const Navbar = ({ children }) => {
   };
 
   const User = useSelector((state) => state.music.User);
-
+  console.log(User);
   let history = useHistory();
 
   return (
@@ -111,7 +111,7 @@ const Navbar = ({ children }) => {
 
           <div className={classes.profile} onClick={handleClick}>
             <Avatar
-              src={User?.images[0].url}
+              src={User?.images === [] ? "" : User?.images[0]?.url}
               style={{ width: "25px", height: "25px" }}
             />
             <p className={classes.margin}>{User?.display_name}</p>
