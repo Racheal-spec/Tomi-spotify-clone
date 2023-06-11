@@ -114,8 +114,6 @@ const Homepage = () => {
   }, [setIsloading]);
   const Details = useSelector((state) => state.details.Playlist);
   const User = useSelector((state) => state.music.User);
-  const error = useSelector((state) => state.music.error);
-  console.log(User, error);
   const matches = useMediaQuery(themes.breakpoints.down("sm"));
 
   return (

@@ -25,7 +25,7 @@ export const LoadUser = () => async (dispatch) => {
       type: "FETCH_USER",
       payload: {
         User: getUser.data,
-        error: getUser.response.data.message,
+        Status: getUser.status,
       },
     });
   }

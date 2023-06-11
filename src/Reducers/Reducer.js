@@ -7,7 +7,7 @@ const initialState = {
   Searchedplaylists: [],
   Featuredplaylists: null,
   Albums: [],
-  error: null,
+  Status: null,
 };
 
 const Reducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Token: action.payload.token,
         User: action.payload.User,
-        error: action.payload.error,
+        Status: action.payload.Status,
       };
     case "FETCH_PLAYLISTS":
       return {
