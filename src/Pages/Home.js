@@ -77,7 +77,7 @@ const Home = () => {
   const Status = useSelector((state) => state.music.Status);
   const hour = new Date().getHours();
 
-  console.log(Status);
+  // console.log(Status);
 
   return (
     <>
@@ -93,18 +93,20 @@ const Home = () => {
               : "Good evening"}
           </Typography>
           <Grid container spacing={1} className={classes.CardContainer}>
-            {Status === 403
-              ? "User not registered in the Developer Dashboard"
-              : Playlists.slice(0, 4).map((item) => (
-                  <Grid item xl={6} lg={6} xs={6} key={item.id}>
-                    <SmallCard
-                      id={item.id}
-                      key={item.id}
-                      name={item.name}
-                      images={item?.images === [] ? "" : item?.images[0]?.url}
-                    />
-                  </Grid>
-                ))}
+            {Status === 403 ? (
+              <div>User not registered in the Developer Dashboard</div>
+            ) : (
+              Playlists.slice(0, 4).map((item) => (
+                <Grid item xl={6} lg={6} xs={6} key={item.id}>
+                  <SmallCard
+                    id={item.id}
+                    key={item.id}
+                    name={item.name}
+                    images={item?.images === [] ? "" : item?.images[0]?.url}
+                  />
+                </Grid>
+              ))
+            )}
           </Grid>
 
           <div className={classes.titleDiv}>
