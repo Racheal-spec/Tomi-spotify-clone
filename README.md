@@ -1,11 +1,14 @@
 # Spotify Clone Application
 
-This is a front-end clone of the spotify web player. The UI was modelled after the spotify desktop app using React Js, Spotify Web Api, Redux for state management and Material UI for styling.
-In this Spotify Clone application you can log in to the application with your spotify account, view your own playlist, select your preferred playlist and listen to your favorite music.
+This is a front-end clone of the Spotify web player. The UI was modeled after the Spotify desktop app interface using React Js, Spotify Web API, Redux for state management, and Material UI for styling.
+Users can log in to the application with their Spotify account details, view playlists, select preferred playlist and listen to their favorite music.
 
-As a requirement to use this application from spotify, it is important that your spotify email is added to the app dashboard as a user. To make that possible, please send me your spotify email on twitter-[@racheltomidev](https://twitter.com/racheltomidev) or send an email to [tomisinrachel@gmail.com](mailto:tomisinrachel@gmail.com).
+## Requirements 
 
-Thanks for understanding!
+- You must be using a Spotify premium account.
+- Your Spotify email must be added to the app dashboard as a user. 
+
+To do that, please send me your Spotify email on Twitter-[@theracheltomi](https://twitter.com/racheltomidev) or send an email to [tomisinrachel@gmail.com](mailto:tomisinrachel@gmail.com).
 
 ## Preview Link
 
@@ -46,8 +49,7 @@ $ npm start
 ```
 
 #### Demo
-
-<img src="spotify-clone-app1.jpg" alt="spotify-clone-app">
+![Screenshot 2023-06-10 at 12 48 19 PM](https://github.com/Racheal-spec/Tomi-spotify-clone/assets/54950873/45449ef3-ca80-497a-a367-92b6648886a0)
 <img src="spotify-clone-app4.jpg" alt="spotify-clone-app">
 <img src="spotify-clone-app2.jpg" alt="spotify-clone-app">
 <img src="spotify-clone-app3.jpg" alt="spotify-clone-app">
